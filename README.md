@@ -11,8 +11,12 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 ## Integrantes
 
 * Isabela Pinheiro Santos
+* Jhonata Jackson Monteiro Motta
 * Júlio Sergio Novaes Gomes
+* Kaio Henrik de Paula Silva
+* Meriane dos Reis Dias
 * Paulo Henrique Costa Santos
+* Thiago Roberto de Souza
 
 ## Orientador
 
