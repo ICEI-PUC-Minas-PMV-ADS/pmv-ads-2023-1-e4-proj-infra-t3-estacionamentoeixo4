@@ -111,7 +111,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                                          |
 |--|--------------------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre              |
-|02| A aplicaçãp deve ser desenvolvida com base em sistema distribuiído |
+|02| A aplicação deve ser desenvolvida com base em sistemas distribuídos|
+|03| A equipe não pode subcontratar o desenvolvimento do trabalho       |
+|04| O projeto deverá ter seu código versionado utilizando git          |
 
 ## Diagrama de Casos de Uso
 
