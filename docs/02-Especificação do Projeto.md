@@ -8,7 +8,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-![image](https://user-images.githubusercontent.com/88635266/225804669-e42e7c14-c3a7-437d-b23d-72ff1748a48a.png)
+![image](https://user-images.githubusercontent.com/88635266/225806477-0fa3ee33-1843-4ee3-a671-20e0aca8b263.png)
 
 ## Histórias de Usuários
 
