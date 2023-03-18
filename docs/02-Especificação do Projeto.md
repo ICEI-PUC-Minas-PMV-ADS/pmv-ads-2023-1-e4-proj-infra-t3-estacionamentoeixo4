@@ -40,19 +40,19 @@ A tabela a seguir apresenta os requisitos do projeto, identificando a sua priori
 
 |  ID      | Descrição do Requisito  | Prioridade |
 |----------|-----------------------------------------|----|
-|RF-001    | O sistema deve permitir ao cliente a criação de um cadastro, informando apenas nome, e-mail e senha, no aplicativo mobile. | ALTA |
-|RF-002    | O sistema deve permitir ao cliente que possui cadastro, fazer o login no aplicativo mobile.  | ALTA |
-|RF-03    | O sistema deve permitir ao administrador de estacionamento realizar um cadastro, informando apenas nome fantasia, CNPJ, e-mail e senha na aplicação Web. | ALTA |
-|RF-04    | O sistema deve permitir ao administrador que tem cadastro fazer o login na aplicação Web | ALTA |
-|RF-05    | O sistema deve notificar o cliente do aplicativo mobile quando houver um estacionamento perto da sua localização. | ALTA |
-|RF-06    | O sistema deve apresentar um mecanismo de busca que permita ao cliente localizar estacionamentos cadastrados que possuam vagas para estacionamento imediato de acordo com sua localização.| ALTA |
-|RF-07    | O sistema deve permitir ao cliente a reserva de vaga no estacionamento a sua escolha. | MÉDIA |
-|RF-08    | O sistema deve permitir ao administrador informar quantas vagas possui o seu estacionamento, bem como o valor por hora e/ou tipo de veículo. | MÉDIA |
-|RF-09    | O sistema deve permitir a partir da geolocalização, que o cliente seja redirecionado ao aplicativo de navegação do dispositivo móvel. | ALTA |
-|RF-10    | O sistema deve permitir que o cliente avalie e comente sobre a experiência no estacionamento. | MÉDIA |
-|RF-11    | O sistema deve permitir ao administrador visualizar o status das vagas cadastradas para o seu estacionamento. | ALTA |
-|RF-12    | O sistema deve permitir ao administrador acompanhar o andamento das reservas atuais e programadas. | MÉDIA |
-|RF-13    | O sistema deve permitir o monitoramento de avaliações e comentários dos usuários sobre o seu negócio. | MÉDIA |
+|RF 01   | O sistema deve permitir ao cliente a criação de um cadastro, informando apenas nome, e-mail e senha, no aplicativo mobile. | ALTA |
+|RF 02    | O sistema deve permitir ao cliente que possui cadastro, fazer o login no aplicativo mobile.  | ALTA |
+|RF 03    | O sistema deve permitir ao administrador de estacionamento realizar um cadastro, informando apenas nome fantasia, CNPJ, e-mail e senha na aplicação Web. | ALTA |
+|RF 04    | O sistema deve permitir ao administrador que tem cadastro fazer o login na aplicação Web | ALTA |
+|RF 05    | O sistema deve notificar o cliente do aplicativo mobile quando houver um estacionamento perto da sua localização. | ALTA |
+|RF 06    | O sistema deve apresentar um mecanismo de busca que permita ao cliente localizar estacionamentos cadastrados que possuam vagas para estacionamento imediato de acordo com sua localização.| ALTA |
+|RF 07    | O sistema deve permitir ao cliente a reserva de vaga no estacionamento a sua escolha. | MÉDIA |
+|RF 08    | O sistema deve permitir ao administrador informar quantas vagas possui o seu estacionamento, bem como o valor por hora e/ou tipo de veículo. | MÉDIA |
+|RF 09    | O sistema deve permitir a partir da geolocalização, que o cliente seja redirecionado ao aplicativo de navegação do dispositivo móvel. | ALTA |
+|RF 10    | O sistema deve permitir que o cliente avalie e comente sobre a experiência no estacionamento. | MÉDIA |
+|RF 11    | O sistema deve permitir ao administrador visualizar o status das vagas cadastradas para o seu estacionamento. | ALTA |
+|RF 12    | O sistema deve permitir ao administrador acompanhar o andamento das reservas atuais e programadas. | MÉDIA |
+|RF 13    | O sistema deve permitir o monitoramento de avaliações e comentários dos usuários sobre o seu negócio. | MÉDIA |
 
 ### Requisitos não Funcionais (RNF)
 
@@ -60,11 +60,11 @@ A tabela a seguir apresenta os requisitos não funcionais que o projeto deverá 
 
 |ID       | Descrição do Requisito  |Prioridade |
 |-------  |-------------------------|----|
-|RNF-01| O sistema deverá utilizar banco de dados relacional (MySQL) e não relacional (FireBase). | MÉDIA |
-|RNF-02| O sistema deverá utilizar o Apache Kafka para transmissão de dados. | MÉDIA |
-|RNF-03| O aplicativo mobile deverá ser compatível com diversos sistemas operacionais, como iOS e Android. | ALTA |
-|RNF-04| A aplicação Web deve conter tecnologias e versões adaptadas para ser renderizada nos navegadores mais usados (Google Chrome, Microsoft Edge, Firefox, Safari). | ALTA |
-|RNF-05| O back-end deve ser desenvolvido conforme o padrão REST. | ALTA |
+|RNF 01| O sistema deverá utilizar banco de dados relacional (MySQL) e não relacional (FireBase). | MÉDIA |
+|RNF 02| O sistema deverá utilizar o Apache Kafka para transmissão de dados. | MÉDIA |
+|RNF 03| O aplicativo mobile deverá ser compatível com diversos sistemas operacionais, como iOS e Android. | ALTA |
+|RNF 04| A aplicação Web deve conter tecnologias e versões adaptadas para ser renderizada nos navegadores mais usados (Google Chrome, Microsoft Edge, Firefox, Safari). | ALTA |
+|RNF 05| O back-end deve ser desenvolvido conforme o padrão REST. | ALTA |
 
 
 ## Modelagem do Processo de Negócio 
