@@ -40,8 +40,8 @@ A tabela a seguir apresenta os requisitos do projeto, identificando a sua priori
 
 |  ID      | Descrição do Requisito  | Prioridade |
 |----------|-----------------------------------------|----|
-|RF-01    | O sistema deve permitir ao cliente a criação de um cadastro, informando apenas nome, e-mail e senha, no aplicativo mobile. | ALTA |
-|RF-02    | O sistema deve permitir ao cliente que possui cadastro, fazer o login no aplicativo mobile.  | ALTA |
+|RF-001    | O sistema deve permitir ao cliente a criação de um cadastro, informando apenas nome, e-mail e senha, no aplicativo mobile. | ALTA |
+|RF-002    | O sistema deve permitir ao cliente que possui cadastro, fazer o login no aplicativo mobile.  | ALTA |
 |RF-03    | O sistema deve permitir ao administrador de estacionamento realizar um cadastro, informando apenas nome fantasia, CNPJ, e-mail e senha na aplicação Web. | ALTA |
 |RF-04    | O sistema deve permitir ao administrador que tem cadastro fazer o login na aplicação Web | ALTA |
 |RF-05    | O sistema deve notificar o cliente do aplicativo mobile quando houver um estacionamento perto da sua localização. | ALTA |
