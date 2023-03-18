@@ -28,7 +28,20 @@ Apresente aqui as histórias de usuário que são relevantes para o projeto de s
 > - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
 > - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
 
+## Casos de Uso
 
+De acordo com o perfil e as histórias das personas mencionadas no item anterior, foram identificados os seguintes casos de uso:
+
+* Realizar cadastro de usuário cliente (UC-01);
+* Realizar cadastro de empresa de estacionamento (UC-02);
+* Efetuar busca por estacionamentos próximos a localização (UC-03);
+* Efetuar reserva de vaga em um estacionamento (UC-4);
+* Avaliação após a utilização de um estacionamento (UC-05);
+* Realizar cadastro de vagas de estacionamento no sistema (UC-06);
+* Informar valores das vagas com base no tempo de permanência e/ou tipo de veículo (UC-07);
+* Visualizar status das vagas cadastradas (UC-08);
+* Acompanhar o andamento das reservas (UC-09);
+* Monitorar as avaliações dos clientes (UC-10).
 
 ## Requisitos
 
