@@ -2,7 +2,12 @@
 
 <span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>
 
-Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
+Basicamente o software é constituido por duas interfaces mobile e web. Além disso, possui 3 microservicos:
+* API Rest produtor - Responsável pelo crud de cliente,estacionamento e produtor da mensageria para as reservas de vagas e notificações.
+* Apache Kafka - Responsável por processamento de streams.
+* API Rest consumidor - Responsável por gerenciar as mensagens recebida do produtor para inserir no banco de dados e retornar a confirmação para o produtor.
+
+Usamos dois bancos de dados o MySQL para armazenar os dados da aplicação e o Firebas(NoSQL) para gerenciar os tokens de acesso. 
 
 ![Arquitetura da Solução](img/arquitetura.png)
 
