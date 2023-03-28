@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql
+    container_name: whypark
+    restart: always
+    volumes:
+      - why_park-db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: whypark85k[=
+      MYSQL_USER: whypark
+      MYSQL_PASSWORD: whypark85k[=
+      MYSQL_DATABASE: db_why_park
+    ports:
+      - 3303:3306
+    cap_add:
+      - SYS_NICE
+    networks:
+      - checkpoint-networks
+
+volumes:
+  why_park-db-data:
+
+
+networks:
+  checkpoint-networks:
+    driver: bridge
