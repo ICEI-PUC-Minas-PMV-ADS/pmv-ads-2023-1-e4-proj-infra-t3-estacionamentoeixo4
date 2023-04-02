@@ -14,7 +14,7 @@ namespace api_consumer.Api.Reserva.Dto
 
         public int Duracao { get; set; }
 
-        public DateTimeOffset HorarioReserva { get; set; } = DateTimeOffset.UtcNow;
+        public DateTime HorarioReserva { get; set; }
 
         public int IdVeiculo { get; set; }
     }

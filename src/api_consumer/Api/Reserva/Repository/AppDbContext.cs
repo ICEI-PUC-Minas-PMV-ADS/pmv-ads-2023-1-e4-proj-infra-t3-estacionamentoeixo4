@@ -5,21 +5,32 @@ namespace api_consumer.Api.Reserva.Repository
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public AppDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<ReservaEntity> Reservas => Set<ReservaEntity>();
+        public DbSet<ReservaEntity> reserva { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // TODO - Estudar como definir tipos 
             modelBuilder.Entity<ReservaEntity>(entity =>
             {
-                entity.HasKey(e => e.IdCliente).HasName("id_cliente");
-                entity.HasKey(e => e.IdEstacionamento).HasName("id_estacionamento");
+                entity.HasKey(r => new { r.IdCliente, r.IdEstacionamento });
+                entity.Property(e => e.IdCliente).HasColumnName("id_cliente").IsRequired();
+                entity.Property(e => e.IdEstacionamento).HasColumnName("id_estacionamento").IsRequired();
                 entity.Property(e => e.Duracao).HasColumnName("duracao").IsRequired();
-                entity.Property(e => e.HorarioReserva).HasColumnName("horario_reserva").IsRequired();
+                entity.Property(e => e.HorarioReserva).HasColumnName("horario_reserva").HasColumnType("timestamp").IsRequired();
                 entity.Property(e => e.IdVeiculo).HasColumnName("id_veiculo").IsRequired();
             });
+
+            // Debater cominicação com o outro back-end
+            // modelBuilder.Entity<ReservaEntity>()
+            //     .HasOne(r => r.Cliente) define a relação com a entidade Cliente
+            //     .WithMany(c => c.Reservas) define a propriedade de navegação inversa
+            //     .HasForeignKey(r => r.IdCliente); define a chave estrangeira como IdCliente
+
+            // modelBuilder.Entity<ReservaEntity>()
+            //     .HasOne(r => r.Estacionamento) define a relação com a entidade Estacionamento
+            //     .WithMany(e => e.Reservas) define a propriedade de navegação inversa
+            //     .HasForeignKey(r => r.IdEstacionamento); define a chave estrangeira como IdEstacionamento
         }
     }
 }
