@@ -2,21 +2,20 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import helmet from 'helmet';
-
+import 'dotenv/config';
 /**
- * @function bootsrap 
+ * @function bootsrap
  * Cria o servidor express
  */
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  //Validações globais 
+  //Validações globais
   app.useGlobalPipes(new ValidationPipe());
 
-
   /**
-   * Configuração do helmet 
+   * Configuração do helmet
    *   O Helmet pode ajudar a proteger seu aplicativo de algumas vulnerabilidades da Web conhecidas,
-   *   definindo os cabeçalhos HTTP de forma adequada. Geralmente, o Helmet é apenas uma coleção de 
+   *   definindo os cabeçalhos HTTP de forma adequada. Geralmente, o Helmet é apenas uma coleção de
    *   funções de middleware menores que definem cabeçalhos HTTP relacionados à segurança
    *
    */
@@ -45,7 +44,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api_producer');
 
   //Listener server express
-  const port = process.env.PORT || 300;
+  const port = process.env.PORT || 3000;
   await app.listen(port);
 }
 bootstrap();
