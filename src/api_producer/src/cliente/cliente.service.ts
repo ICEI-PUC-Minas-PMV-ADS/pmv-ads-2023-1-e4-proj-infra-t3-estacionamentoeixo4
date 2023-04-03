@@ -1,23 +1,73 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm'
+import {
+  BadRequestException,
+  CACHE_MANAGER,
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-client.dto';
-import ClienteEntity from './entities/cliente.entity';
-import ClienteRepository from './repository/cliente.repository';
+import { PrismaService } from '@src/prisma/prisma.service';
+import { cliente as Cliente } from '@prisma/client';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class ClienteService {
-
   constructor(
-    @InjectRepository(ClienteEntity)
-    private readonly clienteRepository: ClienteRepository
-  ) { }
-  create(createClienteDto: CreateClienteDto) {
-    return 'This action adds a new user';
+    private readonly clientRepository: PrismaService,
+    @Inject(CACHE_MANAGER) private readonly clienteCache: Cache,
+  ) {}
+
+  /**
+   * @function Create Cliente
+   * @param createClienteDto
+   * @returns Client Created
+   */
+  async create(createClienteDto: CreateClienteDto) {
+    const isExistEmail = await this.clientRepository.cliente.findFirst({
+      where: { email: createClienteDto.email },
+    });
+
+    if (isExistEmail) {
+      throw new BadRequestException(
+        `O Email ${createClienteDto.email} já está cadastrado. Por favor, tente recupere a senha!`,
+      );
+    }
+
+    const clienteResult: Cliente = await this.clientRepository.cliente.create({
+      data: createClienteDto,
+    });
+
+    if (!clienteResult) {
+      throw new InternalServerErrorException(
+        `Não foi possível criar o cliente `,
+      );
+    }
+
+    //Guarda o cliente criado no banco para ser recuperado quando logar no cache
+    await this.clienteCache.set(
+      `user_crated_${clienteResult.id}`,
+      clienteResult,
+    );
+    return clienteResult;
   }
 
-  findAll() {
-    return this.clienteRepository.find();
+  async findAll() {
+    const clientesInCache: Cliente[] = await this.clienteCache.get(
+      'clientes_cache',
+    );
+
+    if (clientesInCache) {
+      return clientesInCache;
+    }
+    const clientesResultDB = await this.clientRepository.cliente.findMany();
+
+    if (!clientesResultDB) throw new NotFoundException('Não existe clientes!');
+
+    await this.clienteCache.set('clientes_cache', clientesResultDB);
+
+    return clientesResultDB;
   }
 
   findOne(id: number) {
@@ -25,7 +75,8 @@ export class ClienteService {
   }
 
   update(id: number, updateClienteDto: UpdateClienteDto) {
-    return `This action updates a #${id} user`;
+    const body = updateClienteDto;
+    return `This action updates a #${id} ${body} user`;
   }
 
   remove(id: number) {

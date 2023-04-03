@@ -3,8 +3,11 @@
 /node_modules
 .env
 package-lock.json
-
-
+src/api_producer/node_modules
+src/api_producer/dist
+src/api_producer/package-lock.json
+src/api_producer/yarn.lock
+src/api_producer/.env
 # Logs
 logs
 *.log
@@ -36,3 +39,8 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# .NET Core build folders
+bin/
+obj/
+.vscode

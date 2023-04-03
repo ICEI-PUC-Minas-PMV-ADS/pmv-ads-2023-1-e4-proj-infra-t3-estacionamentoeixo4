@@ -3,34 +3,38 @@
 ## Installation
 
 ```bash
-$ yarn install
+$ cd src/api_producer && yarn install
+$ cd src/api_consumer && yarn install
 ```
 ## Running the app
 
 ```bash
-# development
-$ yarn run start
+# development - esse que usamos com hotreload
+$  cd src/api_producer &&  yarn run start
+$  cd src/api_consumer &&  yarn run start
 
 # watch mode
-$ yarn run start:dev
+$ cd src/api_producer  && yarn run start:dev
+$ cd src/api_consumer  && yarn run start:dev
 
 # production mode
-$ yarn run start:prod
+$  cd src/api_producer  && yarn run start:prod
+$  cd src/api_consumer && yarn run start:prod
 ```
 ## Test
 
 ```bash
 # unit tests
-$ yarn run test
-
+$   cd src/api_producer  && yarn run test
+$   cd src/api_consumer  && yarn run test
 # e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+$ cd src/api_producer  && yarn run test:e2e
+$ cd src/api_consumer  &&  yarn run test:e2e
+# test coverage]
+$ cd src/api_producer  && yarn run test:cov
+$ cd src/api_consumer  && yarn run test:cov
 ```
 ## Cli
-
 - Help
 `
 nest --help

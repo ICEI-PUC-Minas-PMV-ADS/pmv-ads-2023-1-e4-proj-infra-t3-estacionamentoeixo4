@@ -1,26 +1,20 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "paths": {
+      "@config/*": ["src/config/*"],
+      "@database/*": ["src/database/*"],
+      "@src/*": ["src/*"]
+    },
     "declaration": true,
     "removeComments": true,
-    "paths": {
-      "@config/*": [
-        "src/config/*",
-      ],
-      "@database/*": [
-        "src/database/*",
-      ],
-      "@src/*": [
-        "src/*"
-      ]
-    },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
-    "outDir": "dist",
-    "baseUrl": "",
+    "outDir": "./dist",
+    "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
