@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.SwaggerConfigBuilder();
 
 // Conexão com o banco de dados
-string mySqlConnectionStr = builder.Configuration.GetSection("ConnectionStrings:DefaultConnection")?.Value;
-builder.Services.AddDbContextPool<AppDbContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+string pgsqlConnectionStr = builder.Configuration.GetSection("ConnectionStrings:DefaultConnection")?.Value;
+builder.Services.AddDbContextPool<AppDbContext>(options => options.UseNpgsql(pgsqlConnectionStr));
 
 var app = builder.Build();
 
