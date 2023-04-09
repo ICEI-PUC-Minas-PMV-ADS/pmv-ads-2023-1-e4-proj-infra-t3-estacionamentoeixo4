@@ -3,7 +3,6 @@
     "module": "commonjs",
     "paths": {
       "@config/*": ["src/config/*"],
-      "@database/*": ["src/database/*"],
       "@src/*": ["src/*"]
     },
     "declaration": true,
