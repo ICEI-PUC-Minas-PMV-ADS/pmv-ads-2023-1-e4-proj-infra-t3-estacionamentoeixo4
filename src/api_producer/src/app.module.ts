@@ -3,6 +3,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 
 import { AuthModule } from './auth/auth.module';
 import { ClienteModule } from './cliente/cliente.module';
+import { ManagerModule } from './manager/manager.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisClientOptions } from 'redis';
@@ -14,6 +15,7 @@ import { configRedisCache } from '@config/redis.config';
     CacheModule.register<RedisClientOptions>(configRedisCache),
     AuthModule,
     ClienteModule,
+    ManagerModule,
     PrismaModule,
   ],
   providers: [
