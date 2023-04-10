@@ -25,7 +25,6 @@ model Administrador {
   updatedAt DateTime @default(now())
   nome String
   email String  @unique
-  senha String 
   id_estacionamento Int
 
   @@map("administrador")

@@ -10,7 +10,4 @@ export class CreateManagerDto {
   email: string;
 
   id_estacionamento: number;
-
-  @MinLength(8)
-  senha: string;
 }

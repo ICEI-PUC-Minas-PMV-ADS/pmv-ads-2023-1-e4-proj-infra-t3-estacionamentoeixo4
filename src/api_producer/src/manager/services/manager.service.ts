@@ -4,11 +4,9 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import * as bcrypt from 'bcryptjs';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateManagerDto } from '../dto/create-manager.dto';
-import { UpdatedManagerDto } from '../dto/update-manager.dto';
-import { UpdateManagerPasswordDto } from '../dto/reset-password.dto';
+import { UpdateManagerDto } from '../dto/update-manager.dto';
 import { Administrador } from '@prisma/client';
 
 @Injectable()
@@ -16,7 +14,7 @@ export class ManagerService {
   constructor(private readonly managerRepository: PrismaService) {}
 
   async create(CreateManagerDto: CreateManagerDto) {
-    const { nome, email, senha, id_estacionamento } = CreateManagerDto;
+    const { nome, email, id_estacionamento } = CreateManagerDto;
 
     if (!this.verifyEmail(email)) {
       throw new ConflictException(
@@ -24,16 +22,12 @@ export class ManagerService {
       );
     }
 
-    const salt: string = await bcrypt.genSalt();
-    const encryptedPassword: string = await bcrypt.hash(senha, salt);
-
     const administrador: Administrador =
       await this.managerRepository.administrador.create({
         data: {
           nome,
           email,
           id_estacionamento,
-          senha: encryptedPassword,
         },
       });
 
@@ -65,8 +59,8 @@ export class ManagerService {
     return manager;
   }
 
-  async update(id: number, updatedManagerDto: UpdatedManagerDto) {
-    const { nome, email, id_estacionamento } = updatedManagerDto;
+  async update(id: number, updateManagerDto: UpdateManagerDto) {
+    const { nome, email, id_estacionamento } = updateManagerDto;
 
     const existingManager =
       await this.managerRepository.administrador.findUnique({
@@ -92,37 +86,6 @@ export class ManagerService {
           nome,
           email,
           id_estacionamento,
-        },
-      });
-
-    return updatedManager;
-  }
-
-  async resetPassword(
-    id: number,
-    updateManagerPasswordDto: UpdateManagerPasswordDto,
-  ) {
-    const { senha } = updateManagerPasswordDto;
-
-    const existingManager =
-      await this.managerRepository.administrador.findUnique({
-        where: { id },
-      });
-
-    if (!existingManager) {
-      throw new NotFoundException(
-        `Administrador com o ID '${id}' não encontrado.`,
-      );
-    }
-
-    const salt: string = await bcrypt.genSalt();
-    const encryptedPassword: string = await bcrypt.hash(senha, salt);
-
-    const updatedManager: Administrador =
-      await this.managerRepository.administrador.update({
-        where: { id },
-        data: {
-          senha: encryptedPassword,
         },
       });
 
