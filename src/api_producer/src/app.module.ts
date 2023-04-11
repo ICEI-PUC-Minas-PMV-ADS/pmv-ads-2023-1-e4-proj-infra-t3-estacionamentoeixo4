@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisClientOptions } from 'redis';
 import { configRedisCache } from '@config/redis.config';
+import { VeiculoModule } from './veiculo/veiculo.module';
 
 @Module({
   imports: [
@@ -15,12 +16,7 @@ import { configRedisCache } from '@config/redis.config';
     AuthModule,
     ClienteModule,
     PrismaModule,
-  ],
-  providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CacheInterceptor,
-    },
+    VeiculoModule,
   ],
 })
 export class AppModule {}
