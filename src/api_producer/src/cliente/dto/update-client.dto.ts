@@ -4,12 +4,11 @@ import { IsString, MinLength, MaxLength } from 'class-validator';
 
 export class UpdateClienteDto extends PartialType(CreateClienteDto) {
   @IsString()
-  @MinLength(8)
-  // @ApiProperty() Caso tenha documentação no swagger, ainda vamos implementar
+  @MaxLength(8)
   name: string;
 
   @IsString()
-  @MinLength(8)
+  @MaxLength(50)
   email: string;
 
   @IsString()

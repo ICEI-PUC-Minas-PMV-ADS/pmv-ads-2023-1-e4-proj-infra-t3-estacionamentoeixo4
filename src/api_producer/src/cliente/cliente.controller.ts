@@ -16,7 +16,7 @@ export class ClienteController {
   constructor(private readonly clienteService: ClienteService) {}
 
   @Post()
-  create(@Body() createClienteDto: CreateClienteDto) {
+  create(@Body() createClienteDto) {
     return this.clienteService.create(createClienteDto);
   }
 
