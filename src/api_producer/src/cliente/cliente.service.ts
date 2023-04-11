@@ -9,7 +9,7 @@ import {
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-client.dto';
 import { PrismaService } from '@src/prisma/prisma.service';
-import { cliente as Cliente } from '@prisma/client';
+import { Cliente } from '@prisma/client';
 import { Cache } from 'cache-manager';
 
 @Injectable()
