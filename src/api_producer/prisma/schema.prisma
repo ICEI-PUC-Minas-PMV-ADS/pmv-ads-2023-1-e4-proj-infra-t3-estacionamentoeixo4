@@ -34,6 +34,17 @@ model Estacionamento {
 
   // Nome da tabela @@map
   @@map("estacionamento")
+
+model Administrador {
+  id Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  nome String
+  email String  @unique
+  id_estacionamento Int
+
+  @@map("administrador")
+
 }
 
 model Veiculo {
@@ -48,3 +59,4 @@ model Veiculo {
   // Nome da tabela @@map
   @@map("veiculo")
 }
+

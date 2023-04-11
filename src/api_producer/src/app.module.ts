@@ -1,8 +1,7 @@
-import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
-import { APP_INTERCEPTOR } from '@nestjs/core';
-
+import { CacheModule, Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { ClienteModule } from './cliente/cliente.module';
+import { ManagerModule } from './manager/manager.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisClientOptions } from 'redis';
@@ -14,12 +13,10 @@ import { RouterModule } from './router/router.module';
     ConfigModule.forRoot(),
     CacheModule.register<RedisClientOptions>(configRedisCache),
     RouterModule,
-  ],
-  providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CacheInterceptor,
-    },
+    AuthModule,
+    ClienteModule,
+    ManagerModule,
+    PrismaModule,
   ],
 })
 export class AppModule {}
