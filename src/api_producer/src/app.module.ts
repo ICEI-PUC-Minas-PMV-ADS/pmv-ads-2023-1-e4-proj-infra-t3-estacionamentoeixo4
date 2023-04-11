@@ -1,6 +1,4 @@
-import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
-import { APP_INTERCEPTOR } from '@nestjs/core';
-
+import { CacheModule, Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { ManagerModule } from './manager/manager.module';
@@ -17,12 +15,6 @@ import { configRedisCache } from '@config/redis.config';
     ClienteModule,
     ManagerModule,
     PrismaModule,
-  ],
-  providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CacheInterceptor,
-    },
   ],
 })
 export class AppModule {}

@@ -11,7 +11,6 @@ import { ManagerService } from '../services/manager.service';
 import { CreateManagerDto } from '../dto/create-manager.dto';
 import { UpdateManagerDto } from '../dto/update-manager.dto';
 import { ManagerMapper } from '../mapper/manager.mapper';
-
 @Controller('manager')
 export class ManagerController {
   constructor(
