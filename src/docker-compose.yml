@@ -22,13 +22,11 @@ services:
     command: redis-server --save 20 1 --loglevel warning  --requirepass password123
     ports:  
       - "6379:6379"
-    volumes:
-      - /local-data/:/data redis/redis-stack:latest
+   
     environment:
       - REDIS_PASSWORD = password123
 volumes:
   postgres-db-data:
-  redis:
 networks:
   postgres-networks:
     driver: bridge

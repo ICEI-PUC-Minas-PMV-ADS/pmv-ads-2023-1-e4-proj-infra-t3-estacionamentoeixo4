@@ -9,7 +9,7 @@ datasource db {
 
 model Cliente {
   id    Int     @id @default(autoincrement())
-  name  String? @db.VarChar(50)
+  name  String @db.VarChar(50)
   email String  @unique @db.VarChar(50)
   cpf   String  @db.Char(11)
 
@@ -19,6 +19,32 @@ model Cliente {
 
   // Nome da tabela @@map
   @@map("cliente")
+}
+
+model Estacionamento {
+  id    Int     @id @default(autoincrement())
+  preco Decimal @db.Decimal(9, 2)  
+  vagas_preferenciais Int 
+  vagas_gerais  Int
+  razao_social  String  @db.VarChar(255)
+  cnpj  String  @unique @db.Char(14)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+
+  // Nome da tabela @@map
+  @@map("estacionamento")
+
+model Administrador {
+  id Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  nome String
+  email String  @unique
+  id_estacionamento Int
+
+  @@map("administrador")
+
 }
 
 model Veiculo {
@@ -33,3 +59,4 @@ model Veiculo {
   // Nome da tabela @@map
   @@map("veiculo")
 }
+
