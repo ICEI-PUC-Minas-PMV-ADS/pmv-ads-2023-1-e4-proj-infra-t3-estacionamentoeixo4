@@ -1,17 +1,14 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "cliente" (
+    "id" SERIAL NOT NULL,
+    "name" VARCHAR(50) NOT NULL,
+    "email" VARCHAR(50) NOT NULL,
+    "cpf" CHAR(11) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-  - You are about to alter the column `email` on the `cliente` table. The data in that column could be lost. The data in that column will be cast from `Text` to `VarChar(50)`.
-  - You are about to alter the column `name` on the `cliente` table. The data in that column could be lost. The data in that column will be cast from `Text` to `VarChar(50)`.
-  - You are about to alter the column `cpf` on the `cliente` table. The data in that column could be lost. The data in that column will be cast from `Text` to `Char(11)`.
-  - Made the column `name` on table `cliente` required. This step will fail if there are existing NULL values in that column.
-
-*/
--- AlterTable
-ALTER TABLE "cliente" ALTER COLUMN "email" SET DATA TYPE VARCHAR(50),
-ALTER COLUMN "name" SET NOT NULL,
-ALTER COLUMN "name" SET DATA TYPE VARCHAR(50),
-ALTER COLUMN "cpf" SET DATA TYPE CHAR(11);
+    CONSTRAINT "cliente_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "estacionamento" (
@@ -28,6 +25,18 @@ CREATE TABLE "estacionamento" (
 );
 
 -- CreateTable
+CREATE TABLE "administrador" (
+    "id" SERIAL NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "nome" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "id_estacionamento" INTEGER NOT NULL,
+
+    CONSTRAINT "administrador_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "veiculo" (
     "id" SERIAL NOT NULL,
     "placa" VARCHAR(10) NOT NULL,
@@ -38,6 +47,15 @@ CREATE TABLE "veiculo" (
 
     CONSTRAINT "veiculo_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "cliente_email_key" ON "cliente"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "estacionamento_cnpj_key" ON "estacionamento"("cnpj");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "administrador_email_key" ON "administrador"("email");
 
 -- AddForeignKey
 ALTER TABLE "veiculo" ADD CONSTRAINT "veiculo_cliente_id_fkey" FOREIGN KEY ("cliente_id") REFERENCES "cliente"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
