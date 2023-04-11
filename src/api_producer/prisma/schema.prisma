@@ -21,6 +21,17 @@ model Cliente {
   @@map("cliente")
 }
 
+model Administrador {
+  id Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  nome String
+  email String  @unique
+  id_estacionamento Int
+
+  @@map("administrador")
+}
+
 model Veiculo {
   id         Int      @id @default(autoincrement())
   placa      String   @db.VarChar(10)
@@ -33,3 +44,4 @@ model Veiculo {
   // Nome da tabela @@map
   @@map("veiculo")
 }
+
