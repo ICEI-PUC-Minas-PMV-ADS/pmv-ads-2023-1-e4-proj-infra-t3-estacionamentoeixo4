@@ -9,8 +9,8 @@ import {
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-client.dto';
 import { PrismaService } from '@src/prisma/prisma.service';
-import { Cliente } from '@prisma/client';
 import { Cache } from 'cache-manager';
+import { Cliente as Cliente } from '@prisma/client';
 
 @Injectable()
 export class ClienteService {
