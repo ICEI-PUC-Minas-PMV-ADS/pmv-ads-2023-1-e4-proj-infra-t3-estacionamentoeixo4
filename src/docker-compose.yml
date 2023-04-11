@@ -1,35 +1,34 @@
 version: '3.8'
 name: why_park
 services:
-  mysql_why:
-    image: mysql:latest
-    container_name: mysql
+  pg:
+    image: postgres:12
+    container_name: pg
     ports:
-      - 3303:3306
+      - 5432:5432
     environment:
-      MYSQL_ROOT_PASSWORD: mysecretpass
-      MYSQL_USER: usr_whypark
-      MYSQL_PASSWORD: mysecretpass
-      MYSQL_DATABASE: DB_WHYPARK
+      POSTGRES_USER: whypark
+      POSTGRES_PASSWORD: whypark123
+      POSTGRES_DB: db_why_park
     cap_add:
       - SYS_NICE
     networks:
-      - mysql_why-networks
+      - postgres-networks
     volumes:
-      - mysql_why-db-data:/var/lib/mysql
+      - postgres-db-data:/var/lib/postgres
   redis_whypk:
     image: redis
     container_name: redis_whypk
     command: redis-server --save 20 1 --loglevel warning  --requirepass password123
-    ports:
+    ports:  
       - "6379:6379"
+   
     environment:
       - REDIS_PASSWORD = password123
 volumes:
-  mysql_why-db-data:
-  redis:
+  postgres-db-data:
 networks:
-  mysql_why-networks:
+  postgres-networks:
     driver: bridge
   redis_whypk:
     driver: bridge
