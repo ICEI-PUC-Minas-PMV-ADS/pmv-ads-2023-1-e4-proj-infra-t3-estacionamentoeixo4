@@ -10,6 +10,8 @@ builder.SwaggerConfigBuilder();
 // Conexão com o banco de dados
 string pgsqlConnectionStr = builder.Configuration.GetSection("ConnectionStrings:DefaultConnection")?.Value;
 builder.Services.AddDbContextPool<AppDbContext>(options => options.UseNpgsql(pgsqlConnectionStr));
+builder.Services.AddScoped<IReservaRepo, ReservaRepo>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

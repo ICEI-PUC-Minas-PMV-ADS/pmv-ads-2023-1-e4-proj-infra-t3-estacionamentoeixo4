@@ -1,4 +1,5 @@
 using api_consumer.Api.Reserva.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace api_consumer.Api.Reserva.Repository
 {
@@ -6,7 +7,7 @@ namespace api_consumer.Api.Reserva.Repository
     {
         private readonly AppDbContext _context;
 
-        private ReservaRepo(AppDbContext context)
+        public ReservaRepo(AppDbContext context)
         {
             _context = context;
         }
@@ -23,7 +24,7 @@ namespace api_consumer.Api.Reserva.Repository
 
         public async Task<IEnumerable<ReservaEntity>> GetAllReservas()
         {
-            throw new NotImplementedException();
+            return await _context.reserva!.ToListAsync();
         }
 
         public async Task<ReservaEntity>? GetReservaEntityById(int id)
