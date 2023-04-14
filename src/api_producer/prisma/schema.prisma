@@ -16,36 +16,10 @@ model Cliente {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now())
   veiculos  Veiculo[]
+  reserva   Reserva[]
 
   // Nome da tabela @@map
   @@map("cliente")
-}
-
-model Estacionamento {
-  id                  Int     @id @default(autoincrement())
-  preco               Decimal @db.Decimal(9, 2)
-  vagas_preferenciais Int
-  vagas_gerais        Int
-  razao_social        String  @db.VarChar(255)
-  cnpj                String  @unique @db.Char(14)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-
-  @@map("estacionamento")
-
-}
-
-model Administrador {
-  id                Int      @id @default(autoincrement())
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @default(now())
-  nome              String
-  email             String   @unique
-  id_estacionamento Int
-
-  // Nome da tabela @@map
-  @@map("administrador")
 }
 
 model Veiculo {
@@ -59,4 +33,70 @@ model Veiculo {
 
   // Nome da tabela @@map
   @@map("veiculo")
+}
+
+model Reserva {
+  duracao           Int
+  horario_reserva   DateTime
+  id_veiculo        Int
+  cliente           Cliente        @relation(fields: [id_cliente], references: [id])
+  id_cliente        Int
+  estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
+  id_estacionamento Int
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @default(now())
+
+  @@id([id_cliente, id_estacionamento])
+  // Nome da tabela @@map
+  @@map("reserva")
+}
+
+model Estacionamento {
+  id                  Int     @id @default(autoincrement())
+  preco               Decimal @db.Decimal(9, 2)
+  vagas_preferenciais Int
+  vagas_gerais        Int
+  razao_social        String  @db.VarChar(255)
+  cnpj                String  @unique @db.Char(14)
+
+  createdAt     DateTime                           @default(now())
+  updatedAt     DateTime                           @default(now())
+  reservas      Reserva[]
+  administrador EstacionamentoAndAdministradores[]
+  Endereco      Endereco[]
+
+  @@map("estacionamento")
+}
+
+model Administrador {
+  id              Int                                @id @default(autoincrement())
+  createdAt       DateTime                           @default(now())
+  updatedAt       DateTime                           @default(now())
+  nome            String
+  email           String                             @unique
+  estacionamentos EstacionamentoAndAdministradores[]
+
+  // Nome da tabela @@map
+  @@map("administrador")
+}
+
+model EstacionamentoAndAdministradores {
+  estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
+  id_estacionamento Int
+  administrador     Administrador  @relation(fields: [id_administrador], references: [id])
+  id_administrador  Int
+
+  @@id([id_estacionamento, id_administrador])
+}
+
+model Endereco {
+  id                Int            @id @default(autoincrement())
+  cep               Int
+  bairro            String         @db.VarChar(255)
+  endereco          String         @db.VarChar(255)
+  numero            Int
+  cidade            String         @db.VarChar(50)
+  uf                String         @db.Char(2)
+  estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
+  id_estacionamento Int
 }
