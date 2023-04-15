@@ -19,5 +19,5 @@ export class UpdateVeiculoDto extends PartialType(CreateVeiculoDto) {
 
   @IsInt()
   @IsNotEmpty()
-  cliente_id: string;
+  cliente_id: number;
 }
