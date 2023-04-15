@@ -14,7 +14,12 @@ namespace api_consumer.Api.Reserva.Repository
 
         public async Task CreateReserva(ReservaEntity reserva)
         {
-            throw new NotImplementedException();
+            if (reserva == null)
+            {
+                throw new ArgumentNullException(nameof(reserva));
+            }
+
+            await _context.AddAsync(reserva);
         }
 
         public void DeleteReserva(ReservaEntity reserva)
@@ -27,9 +32,9 @@ namespace api_consumer.Api.Reserva.Repository
             return await _context.reserva!.ToListAsync();
         }
 
-        public async Task<ReservaEntity>? GetReservaEntityById(int id)
+        public async Task<ReservaEntity>? GetReservaEntityById(int idCliente, int idEstacionamento)
         {
-            throw new NotImplementedException();
+            return await _context.reserva.FirstOrDefaultAsync(o => o.IdCliente == idCliente && o.IdEstacionamento == idEstacionamento);
         }
 
         public async Task SaveChanges()
