@@ -17,5 +17,5 @@ export class CreateVeiculoDto {
 
   @IsInt()
   @IsNotEmpty()
-  cliente_id: string;
+  cliente_id: number;
 }
