@@ -24,7 +24,11 @@ namespace api_consumer.Api.Reserva.Repository
 
         public void DeleteReserva(ReservaEntity reserva)
         {
-            throw new NotImplementedException();
+            if (reserva == null)
+            {
+                throw new ArgumentNullException(nameof(reserva));
+            }
+            _context.reserva.Remove(reserva);
         }
 
         public async Task<IEnumerable<ReservaEntity>> GetAllReservas()

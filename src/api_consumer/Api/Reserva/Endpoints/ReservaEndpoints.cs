@@ -43,7 +43,37 @@ namespace api_consumer.Api.Reserva.Endpoints
                 await repo.SaveChanges();
 
             });
-                
+
+            app.MapPut("/v1/reservas/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaUpdateDto reservaUpdateDto) => {
+                var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
+                if (reserva == null)
+                {
+                    return Results.NotFound();
+                }
+
+                mapper.Map(reservaUpdateDto, reserva);
+
+                await repo.SaveChanges();
+
+                return Results.NoContent();
+            });
+
+            app.MapDelete("/v1/commands/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) => {
+                var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
+                if (reserva == null)
+                {
+                    return Results.NotFound();
+                }
+
+                repo.DeleteReserva(reserva);
+
+                await repo.SaveChanges();
+
+                return Results.NoContent();
+
+            });
+
+
 
 
         }
