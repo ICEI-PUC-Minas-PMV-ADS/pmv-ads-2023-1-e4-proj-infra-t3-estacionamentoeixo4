@@ -26,8 +26,14 @@ export class EstacionamentoController {
   }
 
   @Patch('/atualizar/:id')
-  async update(@Param('id') id: string, @Body() updateEstacionamentoDto: UpdateEstacionamentoDto) {
-    return await this.estacionamentoService.updateOne(+id, updateEstacionamentoDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updateEstacionamentoDto: UpdateEstacionamentoDto,
+  ) {
+    return await this.estacionamentoService.updateOne(
+      +id,
+      updateEstacionamentoDto,
+    );
   }
 
   @Delete('/deletar/:id')
