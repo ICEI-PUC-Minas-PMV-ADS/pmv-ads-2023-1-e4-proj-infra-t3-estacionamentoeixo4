@@ -14,7 +14,7 @@ export class ManagerService {
   constructor(private readonly managerRepository: PrismaService) {}
 
   async create(CreateManagerDto: CreateManagerDto) {
-    const { nome, email, id_estacionamento } = CreateManagerDto;
+    const { nome, email } = CreateManagerDto;
 
     if (!this.verifyEmail(email)) {
       throw new ConflictException(
@@ -27,7 +27,6 @@ export class ManagerService {
         data: {
           nome,
           email,
-          id_estacionamento,
         },
       });
 
@@ -36,7 +35,11 @@ export class ManagerService {
 
   async getAll() {
     try {
-      const managers = await this.managerRepository.administrador.findMany();
+      const managers = await this.managerRepository.administrador.findMany({
+        include: {
+          estacionamentos: true,
+        },
+      });
       return managers;
     } catch (error) {
       throw new InternalServerErrorException(
@@ -50,6 +53,9 @@ export class ManagerService {
     const manager: Administrador =
       await this.managerRepository.administrador.findUnique({
         where: { id },
+        include: {
+          estacionamentos: true,
+        },
       });
 
     if (!manager) {
@@ -60,7 +66,7 @@ export class ManagerService {
   }
 
   async update(id: number, updateManagerDto: UpdateManagerDto) {
-    const { nome, email, id_estacionamento } = updateManagerDto;
+    const { nome, email } = updateManagerDto;
 
     const existingManager =
       await this.managerRepository.administrador.findUnique({
@@ -85,7 +91,6 @@ export class ManagerService {
         data: {
           nome,
           email,
-          id_estacionamento,
         },
       });
 

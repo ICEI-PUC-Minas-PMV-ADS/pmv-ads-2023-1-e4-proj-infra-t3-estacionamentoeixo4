@@ -10,8 +10,7 @@ import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-client.dto';
 import { PrismaService } from '@src/prisma/prisma.service';
 import { Cache } from 'cache-manager';
-import { Cliente as Cliente } from '@prisma/client';
-
+import { Cliente } from '@prisma/client';
 @Injectable()
 export class ClienteService {
   constructor(
@@ -57,7 +56,7 @@ export class ClienteService {
   }
 
   async findOne(id: number) {
-    const clienteResultDB = await this.clientRepository.cliente.findUnique({
+    const clienteResultDB = await this.clientRepository.cliente.findFirst({
       where: {
         id,
       },
@@ -65,6 +64,15 @@ export class ClienteService {
 
     if (!clienteResultDB) throw new NotFoundException('Cliente não existente!');
 
+    return clienteResultDB;
+  }
+
+  async findEmail(email: string) {
+    const clienteResultDB = await this.clientRepository.cliente.findUnique({
+      where: {
+        email,
+      },
+    });
     return clienteResultDB;
   }
 

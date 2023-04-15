@@ -62,7 +62,7 @@ model Estacionamento {
   createdAt     DateTime                           @default(now())
   updatedAt     DateTime                           @default(now())
   reservas      Reserva[]
-  administrador EstacionamentoAndAdministradores[]
+  administradores EstacionamentoAndAdministradores[]
   Endereco      Endereco[]
 
   @@map("estacionamento")
