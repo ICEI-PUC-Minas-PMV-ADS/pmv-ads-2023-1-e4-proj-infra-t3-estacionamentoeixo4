@@ -1,4 +1,5 @@
 using api_consumer.Api.Reserva.Dto;
+using api_consumer.Api.Reserva.Entity;
 using api_consumer.Api.Reserva.Repository;
 using AutoMapper;
 
@@ -17,11 +18,34 @@ namespace api_consumer.Api.Reserva.Endpoints
                 return Results.Ok(mapper.Map<IEnumerable<ReservaReadDto>>(reservas));
             });
 
-            // Implementar o GetReservaEntityById
-            // app.MapGet("/v1/reserva/{id}", async (IReservaRepo repo, IMapper mapper, int id) =>
-            // {
-            //     
-            // });
+            //Implementar o GetReservaEntityById
+           app.MapGet("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) =>
+           {
+               var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
+
+               if (reserva != null) 
+               {
+                   return Results.Ok(mapper.Map<ReservaReadDto>(reserva));
+               }
+               return Results.NotFound();
+             
+           });
+
+            app.MapPost("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaCreateDto reservaCreateDto) =>
+            {
+                var reserva = mapper.Map<ReservaEntity>(reservaCreateDto);
+
+                reserva.IdCliente = idCliente;
+                reserva.IdEstacionamento = idEstacionamento;
+
+                await repo.CreateReserva(reserva);
+
+                await repo.SaveChanges();
+
+            });
+                
+
+
         }
     }
 }
