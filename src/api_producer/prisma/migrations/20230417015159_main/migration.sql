@@ -15,7 +15,7 @@ CREATE TABLE "veiculo" (
     "id" SERIAL NOT NULL,
     "placa" VARCHAR(10) NOT NULL,
     "modelo" VARCHAR(20) NOT NULL,
-    "cliente_id" INTEGER NOT NULL,
+    "id_cliente" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -29,6 +29,7 @@ CREATE TABLE "reserva" (
     "id_veiculo" INTEGER NOT NULL,
     "id_cliente" INTEGER NOT NULL,
     "id_estacionamento" INTEGER NOT NULL,
+    "canceledAt" TIMESTAMP(0),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -92,7 +93,7 @@ CREATE UNIQUE INDEX "estacionamento_cnpj_key" ON "estacionamento"("cnpj");
 CREATE UNIQUE INDEX "administrador_email_key" ON "administrador"("email");
 
 -- AddForeignKey
-ALTER TABLE "veiculo" ADD CONSTRAINT "veiculo_cliente_id_fkey" FOREIGN KEY ("cliente_id") REFERENCES "cliente"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "veiculo" ADD CONSTRAINT "veiculo_id_cliente_fkey" FOREIGN KEY ("id_cliente") REFERENCES "cliente"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "reserva" ADD CONSTRAINT "reserva_id_cliente_fkey" FOREIGN KEY ("id_cliente") REFERENCES "cliente"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

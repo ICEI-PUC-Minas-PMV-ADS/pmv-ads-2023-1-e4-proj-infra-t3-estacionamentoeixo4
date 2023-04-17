@@ -26,8 +26,8 @@ model Veiculo {
   id         Int      @id @default(autoincrement())
   placa      String   @db.VarChar(10)
   modelo     String   @db.VarChar(20)
-  cliente    Cliente  @relation(fields: [cliente_id], references: [id])
-  cliente_id Int
+  cliente    Cliente  @relation(fields: [id_cliente], references: [id])
+  id_cliente Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
 
@@ -43,6 +43,7 @@ model Reserva {
   id_cliente        Int
   estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
   id_estacionamento Int
+  canceledAt        DateTime?      @db.Timestamp(0)
   createdAt         DateTime       @default(now())
   updatedAt         DateTime       @default(now())
 
@@ -59,11 +60,11 @@ model Estacionamento {
   razao_social        String  @db.VarChar(255)
   cnpj                String  @unique @db.Char(14)
 
-  createdAt     DateTime                           @default(now())
-  updatedAt     DateTime                           @default(now())
-  reservas      Reserva[]
+  createdAt       DateTime                           @default(now())
+  updatedAt       DateTime                           @default(now())
+  reservas        Reserva[]
   administradores EstacionamentoAndAdministradores[]
-  Endereco      Endereco[]
+  Endereco        Endereco[]
 
   @@map("estacionamento")
 }

@@ -9,6 +9,7 @@ import 'dotenv/config';
  */
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   //Validações globais
   app.useGlobalPipes(new ValidationPipe());
 
