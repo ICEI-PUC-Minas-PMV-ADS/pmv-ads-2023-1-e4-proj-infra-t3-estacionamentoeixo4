@@ -23,20 +23,6 @@ CREATE TABLE "veiculo" (
 );
 
 -- CreateTable
-CREATE TABLE "reserva" (
-    "duracao" INTEGER NOT NULL,
-    "horario_reserva" TIMESTAMP(3) NOT NULL,
-    "id_veiculo" INTEGER NOT NULL,
-    "id_cliente" INTEGER NOT NULL,
-    "id_estacionamento" INTEGER NOT NULL,
-    "canceledAt" TIMESTAMP(0),
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "reserva_pkey" PRIMARY KEY ("id_cliente","id_estacionamento")
-);
-
--- CreateTable
 CREATE TABLE "estacionamento" (
     "id" SERIAL NOT NULL,
     "preco" DECIMAL(9,2) NOT NULL,
@@ -94,12 +80,6 @@ CREATE UNIQUE INDEX "administrador_email_key" ON "administrador"("email");
 
 -- AddForeignKey
 ALTER TABLE "veiculo" ADD CONSTRAINT "veiculo_id_cliente_fkey" FOREIGN KEY ("id_cliente") REFERENCES "cliente"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "reserva" ADD CONSTRAINT "reserva_id_cliente_fkey" FOREIGN KEY ("id_cliente") REFERENCES "cliente"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "reserva" ADD CONSTRAINT "reserva_id_estacionamento_fkey" FOREIGN KEY ("id_estacionamento") REFERENCES "estacionamento"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "EstacionamentoAndAdministradores" ADD CONSTRAINT "EstacionamentoAndAdministradores_id_estacionamento_fkey" FOREIGN KEY ("id_estacionamento") REFERENCES "estacionamento"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

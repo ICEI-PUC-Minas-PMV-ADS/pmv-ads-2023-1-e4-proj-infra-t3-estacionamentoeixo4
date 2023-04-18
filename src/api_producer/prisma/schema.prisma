@@ -16,7 +16,6 @@ model Cliente {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now())
   veiculos  Veiculo[]
-  reserva   Reserva[]
 
   // Nome da tabela @@map
   @@map("cliente")
@@ -35,23 +34,6 @@ model Veiculo {
   @@map("veiculo")
 }
 
-model Reserva {
-  duracao           Int
-  horario_reserva   DateTime
-  id_veiculo        Int
-  cliente           Cliente        @relation(fields: [id_cliente], references: [id])
-  id_cliente        Int
-  estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
-  id_estacionamento Int
-  canceledAt        DateTime?      @db.Timestamp(0)
-  createdAt         DateTime       @default(now())
-  updatedAt         DateTime       @default(now())
-
-  @@id([id_cliente, id_estacionamento])
-  // Nome da tabela @@map
-  @@map("reserva")
-}
-
 model Estacionamento {
   id                  Int     @id @default(autoincrement())
   preco               Decimal @db.Decimal(9, 2)
@@ -62,7 +44,6 @@ model Estacionamento {
 
   createdAt       DateTime                           @default(now())
   updatedAt       DateTime                           @default(now())
-  reservas        Reserva[]
   administradores EstacionamentoAndAdministradores[]
   Endereco        Endereco[]
 

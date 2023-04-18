@@ -4,6 +4,7 @@ import { ClienteModule } from '@src/cliente/cliente.module';
 import { EstacionamentoModule } from '@src/estacionamento/estacionamento.module';
 import { ManagerModule } from '@src/manager/manager.module';
 import { PrismaModule } from '@src/prisma/prisma.module';
+import { ReservaModule } from '@src/reserva/reserva.module';
 import { VeiculoModule } from '@src/veiculo/veiculo.module';
 
 const routes = [
@@ -13,6 +14,7 @@ const routes = [
   PrismaModule,
   EstacionamentoModule,
   ManagerModule,
+  ReservaModule,
 ];
 @Module({
   imports: [...routes],
