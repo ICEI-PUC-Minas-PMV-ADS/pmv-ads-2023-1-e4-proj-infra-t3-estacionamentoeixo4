@@ -14,9 +14,14 @@ export class ManagerService {
   constructor(private readonly managerRepository: PrismaService) {}
 
   async create(CreateManagerDto: CreateManagerDto) {
-    const { nome, email, id_estacionamento } = CreateManagerDto;
+    const { nome, email } = CreateManagerDto;
 
-    if (!this.verifyEmail(email)) {
+    const emailExists: Administrador =
+      await this.managerRepository.administrador.findFirst({
+        where: { email },
+      });
+
+    if (emailExists) {
       throw new ConflictException(
         `Administrador com o email '${email}' já está em uso.`,
       );
@@ -27,7 +32,6 @@ export class ManagerService {
         data: {
           nome,
           email,
-          id_estacionamento,
         },
       });
 
@@ -60,7 +64,7 @@ export class ManagerService {
   }
 
   async update(id: number, updateManagerDto: UpdateManagerDto) {
-    const { nome, email, id_estacionamento } = updateManagerDto;
+    const { nome, email } = updateManagerDto;
 
     const existingManager =
       await this.managerRepository.administrador.findUnique({
@@ -73,7 +77,12 @@ export class ManagerService {
       );
     }
 
-    if (!this.verifyEmail(email)) {
+    const emailExists: Administrador =
+      await this.managerRepository.administrador.findFirst({
+        where: { email },
+      });
+
+    if (emailExists) {
       throw new ConflictException(
         `Administrador com o email '${email}' já está em uso.`,
       );
@@ -85,7 +94,6 @@ export class ManagerService {
         data: {
           nome,
           email,
-          id_estacionamento,
         },
       });
 
@@ -109,14 +117,5 @@ export class ManagerService {
     });
 
     return deletedManager;
-  }
-
-  async verifyEmail(email: string): Promise<boolean> {
-    const existingManager: Administrador =
-      await this.managerRepository.administrador.findUnique({
-        where: { email },
-      });
-
-    return existingManager == null;
   }
 }

@@ -8,41 +8,39 @@ datasource db {
 }
 
 model Cliente {
-  id    Int    @id @default(autoincrement())
-  name  String @db.VarChar(50)
-  email String @unique @db.VarChar(50)
-  cpf   String @db.Char(11)
-
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(50)
+  email     String    @unique @db.VarChar(50)
+  cpf       String    @db.Char(11)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now())
-  veiculos  Veiculo[]
 
   // Nome da tabela @@map
   @@map("cliente")
 }
 
 model Estacionamento {
-  id                  Int     @id @default(autoincrement())
-  preco               Decimal @db.Decimal(9, 2)
+  id                  Int           @id @default(autoincrement())
+  preco               Decimal       @db.Decimal(9, 2)
   vagas_preferenciais Int
   vagas_gerais        Int
-  razao_social        String  @db.VarChar(255)
-  cnpj                String  @unique @db.Char(14)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  razao_social        String        @db.VarChar(255)
+  cnpj                String        @unique @db.Char(14)
+  administrador       Administrador @relation(fields: [administrador_id], references: [id])
+  administrador_id    Int
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @default(now())
 
   @@map("estacionamento")
-
 }
 
 model Administrador {
-  id                Int      @id @default(autoincrement())
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @default(now())
-  nome              String
-  email             String   @unique
-  id_estacionamento Int
+  id             Int              @id @default(autoincrement())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @default(now())
+  nome           String
+  email          String           @unique
+  Estacionamento Estacionamento[]
 
   // Nome da tabela @@map
   @@map("administrador")

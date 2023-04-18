@@ -15,19 +15,20 @@ import { EstacionamentoModule } from './estacionamento.module';
 
 @Injectable()
 export class EstacionamentoService {
-  constructor(
-    private readonly clientRepository: PrismaService,
-  ) {}
+  constructor(private readonly clientRepository: PrismaService) {}
 
   /**
    * @function Create Estacionamento
    * @param CreateEstacionamentoDto
    * @returns Estacionamento Created
    */
-  async create(createEstacionamentoDto: CreateEstacionamentoDto): Promise<Estacionamento> {
-    const alreadyExists: Estacionamento = await this.clientRepository.estacionamento.findFirst({
-      where: { cnpj: createEstacionamentoDto.cnpj },
-    });
+  async create(
+    createEstacionamentoDto: CreateEstacionamentoDto,
+  ): Promise<Estacionamento> {
+    const alreadyExists: Estacionamento =
+      await this.clientRepository.estacionamento.findFirst({
+        where: { cnpj: createEstacionamentoDto.cnpj },
+      });
 
     if (alreadyExists) {
       throw new BadRequestException(
@@ -35,9 +36,10 @@ export class EstacionamentoService {
       );
     }
 
-    const createEstacionamento: Estacionamento = await this.clientRepository.estacionamento.create({
-      data: createEstacionamentoDto,
-    });
+    const createEstacionamento: Estacionamento =
+      await this.clientRepository.estacionamento.create({
+        data: createEstacionamentoDto,
+      });
 
     if (!createEstacionamento) {
       throw new InternalServerErrorException(
@@ -49,40 +51,46 @@ export class EstacionamentoService {
   }
 
   async findOne(id: number): Promise<Estacionamento> {
-    const foundEstacionamento: Estacionamento = await this.clientRepository.estacionamento.findUnique({
-      where: { id: id },
-    })
+    const foundEstacionamento: Estacionamento =
+      await this.clientRepository.estacionamento.findUnique({
+        where: { id: id },
+      });
 
-    if(!foundEstacionamento) {
+    if (!foundEstacionamento) {
       throw new InternalServerErrorException(
         `Não foi possível encontrar o estacionamento. id: ${id}`,
       );
     }
 
-    return foundEstacionamento
+    return foundEstacionamento;
   }
 
-  async updateOne(id: number, updateEstacionamentoDto: UpdateEstacionamentoDto): Promise<Estacionamento> {
-    const updatedEstacionamento: Estacionamento = await this.clientRepository.estacionamento.update({
-      where: { id: id },
-      data: updateEstacionamentoDto
-    })
+  async updateOne(
+    id: number,
+    updateEstacionamentoDto: UpdateEstacionamentoDto,
+  ): Promise<Estacionamento> {
+    const updatedEstacionamento: Estacionamento =
+      await this.clientRepository.estacionamento.update({
+        where: { id: id },
+        data: updateEstacionamentoDto,
+      });
 
-    if(!updatedEstacionamento) {
+    if (!updatedEstacionamento) {
       throw new InternalServerErrorException(
         `Não foi possível atualizar o estacionamento. id: ${id}`,
       );
     }
 
-    return updatedEstacionamento
+    return updatedEstacionamento;
   }
 
   async removeOne(id: number): Promise<any> {
-    const deletedEstacionamento: Estacionamento = await this.clientRepository.estacionamento.delete({
-      where: { id: id }
-    })
+    const deletedEstacionamento: Estacionamento =
+      await this.clientRepository.estacionamento.delete({
+        where: { id: id },
+      });
 
-    if(!deletedEstacionamento) {
+    if (!deletedEstacionamento) {
       throw new InternalServerErrorException(
         `Não foi possível deletar o estacionamento. id: ${id}`,
       );
@@ -90,7 +98,7 @@ export class EstacionamentoService {
 
     return {
       id: id,
-      message: `Estacionamento com o id: ${id} foi deletado com sucesso.`
-    }
+      message: `Estacionamento com o id: ${id} foi deletado com sucesso.`,
+    };
   }
 }
