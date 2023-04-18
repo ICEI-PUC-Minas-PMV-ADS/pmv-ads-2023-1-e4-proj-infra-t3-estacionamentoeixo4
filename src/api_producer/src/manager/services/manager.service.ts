@@ -16,7 +16,12 @@ export class ManagerService {
   async create(CreateManagerDto: CreateManagerDto) {
     const { nome, email } = CreateManagerDto;
 
-    if (!this.verifyEmail(email)) {
+    const emailExists: Administrador =
+      await this.managerRepository.administrador.findFirst({
+        where: { email },
+      });
+
+    if (emailExists) {
       throw new ConflictException(
         `Administrador com o email '${email}' já está em uso.`,
       );
@@ -79,7 +84,12 @@ export class ManagerService {
       );
     }
 
-    if (!this.verifyEmail(email)) {
+    const emailExists: Administrador =
+      await this.managerRepository.administrador.findFirst({
+        where: { email },
+      });
+
+    if (emailExists) {
       throw new ConflictException(
         `Administrador com o email '${email}' já está em uso.`,
       );
@@ -114,14 +124,5 @@ export class ManagerService {
     });
 
     return deletedManager;
-  }
-
-  async verifyEmail(email: string): Promise<boolean> {
-    const existingManager: Administrador =
-      await this.managerRepository.administrador.findUnique({
-        where: { email },
-      });
-
-    return existingManager == null;
   }
 }

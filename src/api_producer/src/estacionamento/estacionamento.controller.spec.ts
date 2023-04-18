@@ -17,7 +17,9 @@ describe('EstacionamentoController', () => {
       ],
     }).compile();
 
-    controller = await module.get<EstacionamentoController>(EstacionamentoController);
+    controller = await module.get<EstacionamentoController>(
+      EstacionamentoController,
+    );
   });
 
   it('should be defined', () => {
