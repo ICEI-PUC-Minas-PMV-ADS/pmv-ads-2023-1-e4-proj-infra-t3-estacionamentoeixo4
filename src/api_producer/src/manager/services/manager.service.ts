@@ -40,7 +40,11 @@ export class ManagerService {
 
   async getAll() {
     try {
-      const managers = await this.managerRepository.administrador.findMany();
+      const managers = await this.managerRepository.administrador.findMany({
+        include: {
+          estacionamentos: true,
+        },
+      });
       return managers;
     } catch (error) {
       throw new InternalServerErrorException(
@@ -54,6 +58,9 @@ export class ManagerService {
     const manager: Administrador =
       await this.managerRepository.administrador.findUnique({
         where: { id },
+        include: {
+          estacionamentos: true,
+        },
       });
 
     if (!manager) {

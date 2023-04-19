@@ -1,17 +1,12 @@
 import {
   BadRequestException,
-  CACHE_MANAGER,
-  Inject,
   Injectable,
   InternalServerErrorException,
-  NotFoundException,
 } from '@nestjs/common';
 import { PrismaService } from '@src/prisma/prisma.service';
-import { Cache } from 'cache-manager';
 import { CreateEstacionamentoDto } from './dto/create-estacionamento.dto';
 import { Estacionamento } from '@prisma/client';
 import { UpdateEstacionamentoDto } from './dto/update-estacionamento.dto';
-import { EstacionamentoModule } from './estacionamento.module';
 
 @Injectable()
 export class EstacionamentoService {
@@ -28,6 +23,9 @@ export class EstacionamentoService {
     const alreadyExists: Estacionamento =
       await this.clientRepository.estacionamento.findFirst({
         where: { cnpj: createEstacionamentoDto.cnpj },
+        include: {
+          administradores: true,
+        },
       });
 
     if (alreadyExists) {
@@ -54,6 +52,9 @@ export class EstacionamentoService {
     const foundEstacionamento: Estacionamento =
       await this.clientRepository.estacionamento.findUnique({
         where: { id: id },
+        include: {
+          administradores: true,
+        },
       });
 
     if (!foundEstacionamento) {
