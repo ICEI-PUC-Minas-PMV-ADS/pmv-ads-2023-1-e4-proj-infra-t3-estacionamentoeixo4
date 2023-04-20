@@ -13,7 +13,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
             brokers: ['host.docker.internal:9094'],
           },
           consumer: {
-            groupId: 'reserva-' + Math.random(),
+            groupId: 'reserva',
           },
         },
       },

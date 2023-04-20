@@ -1,5 +1,6 @@
 using api_consumer.Api.Reserva.Dto;
 using api_consumer.Api.Reserva.Entity;
+using api_consumer.Api.Reserva.Helpers;
 using api_consumer.Api.Reserva.Repository;
 using AutoMapper;
 
@@ -9,6 +10,10 @@ namespace api_consumer.Api.Reserva.Endpoints
     {
         public static void MapReservaEndpoints(this WebApplication app)
         {
+
+            KafkaConsumer Consumer = new KafkaConsumer();
+            Consumer.ReciveMessage();
+
             app.MapGet("/", () => "Welcome to Consumer Api!");
 
             app.MapGet("/v1/reserva", async (IReservaRepo repo, IMapper mapper) =>
@@ -19,17 +24,17 @@ namespace api_consumer.Api.Reserva.Endpoints
             });
 
             //Implementar o GetReservaEntityById
-           app.MapGet("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) =>
-           {
-               var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
+            app.MapGet("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) =>
+            {
+                var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
 
-               if (reserva != null) 
-               {
-                   return Results.Ok(mapper.Map<ReservaReadDto>(reserva));
-               }
-               return Results.NotFound();
-             
-           });
+                if (reserva != null)
+                {
+                    return Results.Ok(mapper.Map<ReservaReadDto>(reserva));
+                }
+                return Results.NotFound();
+
+            });
 
             app.MapPost("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaCreateDto reservaCreateDto) =>
             {
@@ -44,7 +49,8 @@ namespace api_consumer.Api.Reserva.Endpoints
 
             });
 
-            app.MapPut("/v1/reservas/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaUpdateDto reservaUpdateDto) => {
+            app.MapPut("/v1/reservas/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaUpdateDto reservaUpdateDto) =>
+            {
                 var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
                 if (reserva == null)
                 {
@@ -58,7 +64,8 @@ namespace api_consumer.Api.Reserva.Endpoints
                 return Results.NoContent();
             });
 
-            app.MapDelete("/v1/commands/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) => {
+            app.MapDelete("/v1/commands/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) =>
+            {
                 var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
                 if (reserva == null)
                 {
@@ -72,10 +79,6 @@ namespace api_consumer.Api.Reserva.Endpoints
                 return Results.NoContent();
 
             });
-
-
-
-
         }
     }
 }

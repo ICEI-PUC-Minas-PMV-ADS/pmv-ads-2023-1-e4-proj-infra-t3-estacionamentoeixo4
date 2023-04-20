@@ -11,42 +11,42 @@ export class CreateReservaDto {
   @IsNotEmpty()
   duracao: number;
 
-  @IsDateString()
-  @ApiProperty({
-    description: 'Horário da reserva',
-    default: Date.now(),
-    type: 'data',
-  })
-  @IsNotEmpty()
-  horario_reserva: Date;
+  // @IsDateString()
+  // @ApiProperty({
+  //   description: 'Horário da reserva',
+  //   default: Date.now(),
+  //   type: 'data',
+  // })
+  // @IsNotEmpty()
+  // horario_reserva: Date;
 
-  @IsNumber()
-  @ApiProperty({
-    description: 'Id do cliente',
-    minimum: 1,
-    default: 1,
-    type: 'number',
-  })
-  @IsNotEmpty()
-  id_cliente: number;
+  // @IsNumber()
+  // @ApiProperty({
+  //   description: 'Id do cliente',
+  //   minimum: 1,
+  //   default: 1,
+  //   type: 'number',
+  // })
+  // @IsNotEmpty()
+  // id_cliente: number;
 
-  @IsNumber()
-  @ApiProperty({
-    description: 'Id do veículo',
-    minimum: 1,
-    default: 1,
-    type: 'number',
-  })
-  @IsNotEmpty()
-  id_veiculo: number;
+  // @IsNumber()
+  // @ApiProperty({
+  //   description: 'Id do veículo',
+  //   minimum: 1,
+  //   default: 1,
+  //   type: 'number',
+  // })
+  // @IsNotEmpty()
+  // id_veiculo: number;
 
-  @IsNumber()
-  @ApiProperty({
-    description: 'Id do estacionamento',
-    minimum: 1,
-    default: 1,
-    type: 'number',
-  })
-  @IsNotEmpty()
-  id_estacionamento: number;
+  // @IsNumber()
+  // @ApiProperty({
+  //   description: 'Id do estacionamento',
+  //   minimum: 1,
+  //   default: 1,
+  //   type: 'number',
+  // })
+  // @IsNotEmpty()
+  // id_estacionamento: number;
 }
