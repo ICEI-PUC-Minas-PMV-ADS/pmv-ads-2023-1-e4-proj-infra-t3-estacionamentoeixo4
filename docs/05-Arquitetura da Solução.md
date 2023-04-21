@@ -31,16 +31,14 @@ Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do ba
 
 ## Tecnologias Utilizadas
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
-
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+<br>
 
 ### **Api Producer**
 
 |  Tecnologia | Descrição  | 
 | :------------: | :------------ |
 | JavaScript|  Linguagem de programação |
-| Nest |  Framework de desenvolvimento  | 
+| NestJs |  Framework de desenvolvimento  | 
 | PostgreSQL  |  Banco de dados relacional | 
 | Firebase |  Banco de dados não relacional | 
 | Apache Kafka | Streaming de eventos entre APIS 
@@ -54,7 +52,6 @@ Apresente também uma figura explicando como as tecnologias estão relacionadas 
 | C Sharp|  Linguagem de programação |
 | .Net |  Framework de desenvolvimento  | 
 | PostgreSQL  |  Banco de dados relacional | 
-| Firebase |  Banco de dados não relacional | 
 | Apache Kafka | Streaming de eventos entre APIS 
 
 
