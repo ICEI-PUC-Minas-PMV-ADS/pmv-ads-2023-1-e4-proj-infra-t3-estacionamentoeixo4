@@ -1,3 +1,5 @@
+import { KafkaClientOptions } from './../../node_modules/kafka-node/types/index.d';
+import { KafkaClient, Producer } from 'kafka-node';
 import {
   Controller,
   Post,
@@ -9,17 +11,24 @@ import {
 } from '@nestjs/common';
 import { CreateReservaDto } from './dto/create-reserva.dto';
 import { CanceledReservaDto } from './dto/cancelar-reserva.dto';
-import { ClientKafka } from '@nestjs/microservices';
+import {
+  ClientKafka,
+  KafkaOptions,
+  MessagePattern,
+  Payload,
+  Transport,
+} from '@nestjs/microservices';
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { KafkaService } from './kafka.service';
+
 @ApiTags('Reserva')
 @Controller('reserva')
 export class ReservaController implements OnModuleInit {
-  constructor(
-    @Inject('KAFKA_CONSUMER_RESERVA') private clientKafka: ClientKafka,
-  ) {}
-
+  kafkaProducer: Producer;
+  constructor(private readonly kafkaService: KafkaService) {}
   async onModuleInit() {
-    this.clientKafka.subscribeToResponseOf('reservar_vaga');
+    // this.clientKafka.subscribeToResponseOf('reservar_vaga');
+    // this.kafkaProducer = await this.clientKafka.connect();
   }
 
   @Post()
@@ -31,13 +40,22 @@ export class ReservaController implements OnModuleInit {
   @ApiBody({ type: [CreateReservaDto] })
   async create(@Body() createReservaDto: CreateReservaDto) {
     //Envia os dados para o kafka e espera a resposta
-    this.clientKafka
-      .send('reservar_vaga', JSON.stringify(createReservaDto))
-      .subscribe({
-        next: (reply: any) => {
-          console.log(reply);
-        },
-      });
+    this.kafkaService.sendMessage(
+      'reservar_vaga',
+      JSON.stringify(createReservaDto),
+    );
+    await this.kafkaService.consumer.on('message', (message) => {
+      console.log('Kafka Message:', message);
+    });
+
+    await this.kafkaService.consumer.on('error', (error) => {
+      console.error('Kafka Error:', error);
+    });
+    // .subscribe({
+    //   next: (reply: any) => {
+    //     console.log(reply);
+    //   },
+    // });
   }
 
   @Patch(':id_reserva')
@@ -51,12 +69,12 @@ export class ReservaController implements OnModuleInit {
     @Param('id_reserva') id: string,
     @Body() ReservaCanceledDto: CanceledReservaDto,
   ) {
-    this.clientKafka
-      .send('cancelar_reserva', JSON.stringify(ReservaCanceledDto))
-      .subscribe({
-        next: (replay: any) => {
-          console.log(replay);
-        },
-      });
+    // this.clientKafka
+    //   .send('cancelar_reserva', JSON.stringify(ReservaCanceledDto))
+    //   .subscribe({
+    //     next: (replay: any) => {
+    //       console.log(replay);
+    //     },
+    //   });
   }
 }

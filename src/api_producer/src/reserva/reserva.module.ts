@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ReservaController } from './reserva.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { Partitioners } from 'kafkajs';
+import { KafkaService } from './kafka.service';
 
 @Module({
   imports: [
@@ -24,5 +25,6 @@ import { Partitioners } from 'kafkajs';
     ]),
   ],
   controllers: [ReservaController],
+  providers: [KafkaService],
 })
 export class ReservaModule {}
