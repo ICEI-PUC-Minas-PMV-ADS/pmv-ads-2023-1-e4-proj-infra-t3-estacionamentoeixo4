@@ -27,7 +27,7 @@ Usamos dois bancos de dados o MySQL para armazenar os dados da aplicação e o F
 
 ## Modelo Físico
 
-<li><a href="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/blob/main/src/Srcipt.sql"> Scripts SQL de DML</a></li> 
+<li><a href="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/blob/main/src/Srcipt.sql"> Script SQL</a></li> 
 
 <br>
 
