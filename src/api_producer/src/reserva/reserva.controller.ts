@@ -19,7 +19,6 @@ export class ReservaController implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    this.clientKafka.connect();
     this.clientKafka.subscribeToResponseOf('reservar_vaga');
   }
 

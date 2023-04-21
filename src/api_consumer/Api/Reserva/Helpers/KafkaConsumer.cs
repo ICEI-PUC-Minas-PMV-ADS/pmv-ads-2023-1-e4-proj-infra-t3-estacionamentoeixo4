@@ -67,6 +67,7 @@ public class KafkaConsumer : BackgroundService
         _consumerConfig = new ConsumerConfig
         {
             BootstrapServers = "host.docker.internal:9094",
+            GroupId = "reserva-consumer-group",
             AutoOffsetReset = AutoOffsetReset.Earliest,
             EnableAutoCommit = false, // desabilita o modo AutoCommit
         };
@@ -84,7 +85,6 @@ public class KafkaConsumer : BackgroundService
         consumer.Subscribe("reservar_vaga");
 
         using var producer = new ProducerBuilder<string, string>(_producerConfig).Build();
-
         while (true)
         {
             try
@@ -92,15 +92,15 @@ public class KafkaConsumer : BackgroundService
                 var message = consumer.Consume(stoppingToken);
                 Console.WriteLine($"Received message: {message.Value} at {message.TopicPartitionOffset}");
 
-                // Processa a mensagem e envia a resposta para um tópico de resposta
-                var response = $"Response to message {message.Value}";
-                var responseTopic = new TopicPartition("reservar_vaga.reply", message.TopicPartition.Partition);
-                var responseMessage = new Message<string, string>
-                {
-                    Key = "reserva",
-                    Value = response
-                };
-                await producer.ProduceAsync(responseTopic, responseMessage);
+                // // Processa a mensagem e envia a resposta para um tópico de resposta
+                // var response = $"Response to message {message.Value}";
+                // var responseTopic = new TopicPartition("reservar_vaga.reply", message.TopicPartition.Partition);
+                // var responseMessage = new Message<string, string>
+                // {
+                //     Key = "reserva",
+                //     Value = response
+                // };
+                // await producer.ProduceAsync(responseTopic, responseMessage);
                 // Confirma a mensagem
                 consumer.Commit(message);
             }

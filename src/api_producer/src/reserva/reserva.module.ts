@@ -17,8 +17,7 @@ import { Partitioners } from 'kafkajs';
             createPartitioner: Partitioners.DefaultPartitioner,
           },
           consumer: {
-            readUncommitted: false,
-            groupId: 'reserva',
+            groupId: 'reserva-consumer-group',
           },
         },
       },
