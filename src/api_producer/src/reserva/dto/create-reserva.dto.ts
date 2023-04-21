@@ -1,26 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDateString, IsNotEmpty, IsNumber } from 'class-validator';
+import {
+  IsDate,
+  IsDateString,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 
 export class CreateReservaDto {
   @IsNumber()
-  @ApiProperty({
-    description: 'Duração da reserva',
-    default: 1212242552,
-    type: 'number',
-  })
-  @IsNotEmpty()
-  duracao: number;
-
-  // @IsDateString()
-  // @ApiProperty({
-  //   description: 'Horário da reserva',
-  //   default: Date.now(),
-  //   type: 'data',
-  // })
-  // @IsNotEmpty()
-  // horario_reserva: Date;
-
-  // @IsNumber()
   // @ApiProperty({
   //   description: 'Id do cliente',
   //   minimum: 1,
@@ -28,9 +16,9 @@ export class CreateReservaDto {
   //   type: 'number',
   // })
   // @IsNotEmpty()
-  // id_cliente: number;
+  id_cliente: number;
 
-  // @IsNumber()
+  @IsNumber()
   // @ApiProperty({
   //   description: 'Id do veículo',
   //   minimum: 1,
@@ -38,9 +26,9 @@ export class CreateReservaDto {
   //   type: 'number',
   // })
   // @IsNotEmpty()
-  // id_veiculo: number;
+  id_veiculo: number;
 
-  // @IsNumber()
+  @IsNumber()
   // @ApiProperty({
   //   description: 'Id do estacionamento',
   //   minimum: 1,
@@ -48,5 +36,23 @@ export class CreateReservaDto {
   //   type: 'number',
   // })
   // @IsNotEmpty()
-  // id_estacionamento: number;
+  id_estacionamento: number;
+
+  @IsNumber()
+  // @ApiProperty({
+  //   description: 'Duração da reserva',
+  //   default: 1212242552,
+  //   type: 'number',
+  // })
+  // @IsNotEmpty()
+  duracao: number;
+
+  @IsDateString()
+  // @ApiProperty({
+  //   description: 'Horário da reserva',
+  //   default: Date.now(),
+  //   type: 'data',
+  // })
+  // @IsNotEmpty()
+  horario_reserva: string;
 }

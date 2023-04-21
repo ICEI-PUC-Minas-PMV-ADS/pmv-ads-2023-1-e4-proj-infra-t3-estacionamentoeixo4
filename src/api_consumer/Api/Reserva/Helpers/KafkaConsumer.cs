@@ -1,67 +1,23 @@
-// using Confluent.Kafka;
-// using Serilog;
-// using System;
-// using System.Collections.Generic;
-// using System.Text;
-// using System;
-
-// namespace Application.Services
-// {
-//     public class KafkaConsumer
-//     {
-//         public const String HOST = "127.0.0.1:9094";
-//         public const String KAFKA_TOPIC_NAME = "reservar";
-//         public const String CONSUMER_GROUP_ID = "reserva-consumer-group";
-
-//         public void ReciveMessage()
-//         {
-
-//             var config = new ConsumerConfig
-//             {
-//                 BootstrapServers = "host.docker.internal:9094",
-//                 GroupId = "reservar-group",
-//                 AutoOffsetReset = AutoOffsetReset.Earliest,
-//                 EnableAutoCommit = false, // desabilita o modo AutoCommit
-//             };
-
-//             using (var consumer = new ConsumerBuilder<Ignore, string>(config).Build())
-//             {
-//                 consumer.Subscribe("reservar");
-//                 try
-//                 {
-//                     while (true)
-//                     {
-//                         var message = consumer.Consume();
-
-//                         Console.WriteLine($"Received message: {message.Value} at {message.TopicPartitionOffset}");
-
-
-//                         // processa a mensagem aqui...
-//                         consumer.Commit(message); // confirma a mensagem processada
-//                     }
-//                 }
-//                 catch (OperationCanceledException)
-//                 {
-//                     Console.WriteLine("Closing consumer.");
-//                     consumer.Close();
-//                 }
-//             }
-//         }
-//     }
-// }
-
 using Confluent.Kafka;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using api_consumer.Api.Reserva.Dto;
+using api_consumer.Api.Reserva.Entity;
+using api_consumer.Api.Reserva.Repository;
+using AutoMapper;
+using Newtonsoft.Json;
 
 public class KafkaConsumer : BackgroundService
 {
     private readonly ConsumerConfig _consumerConfig;
     private readonly ProducerConfig _producerConfig;
 
+    private readonly IReservaRepo _reservaRepo;
+    private readonly IMapper _mapper;
+    
     public KafkaConsumer()
     {
         _consumerConfig = new ConsumerConfig
@@ -91,16 +47,30 @@ public class KafkaConsumer : BackgroundService
             {
                 var message = consumer.Consume(stoppingToken);
                 Console.WriteLine($"Received message: {message.Value} at {message.TopicPartitionOffset}");
+                
+                Console.WriteLine(">>>>>>>>>>>>> before.reservaModel");
+
+                //ReservaCreateDto reservaModel = JsonConvert.DeserializeObject<ReservaCreateDto>(message.Value);
+                
+                //Console.WriteLine(">>>>>>>>>>>>> reservaModel.id_veiculo: " + reservaModel.id_veiculo);
+                //Console.WriteLine(">>>>>>>>>>>>> reservaModel.id_cliente: " + reservaModel.id_cliente);
+                    
+                //var reserva = _mapper.Map<ReservaEntity>(reservaModel);
+
+                //await _reservaRepo.CreateReserva(reserva);
+
+                //await _reservaRepo.SaveChanges();
+
 
                 // // Processa a mensagem e envia a resposta para um tópico de resposta
-                // var response = $"Response to message {message.Value}";
-                // var responseTopic = new TopicPartition("reservar_vaga.reply", message.TopicPartition.Partition);
-                // var responseMessage = new Message<string, string>
-                // {
-                //     Key = "reserva",
-                //     Value = response
-                // };
-                // await producer.ProduceAsync(responseTopic, responseMessage);
+                var response = $"Response to message {message.Value}";
+                var responseTopic = new TopicPartition("reservar_vaga.reply", message.TopicPartition.Partition);
+                var responseMessage = new Message<string, string>
+                {
+                    Key = "reserva",
+                    Value = response
+                };
+                await producer.ProduceAsync(responseTopic, responseMessage);
                 // Confirma a mensagem
                 consumer.Commit(message);
             }
