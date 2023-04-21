@@ -85,3 +85,13 @@ Liste quais ferramentas foram empregadas no desenvolvimento do projeto, justific
 > **Possíveis Ferramentas que auxiliarão no gerenciamento**: 
 > - [Slack](https://slack.com/)
 > - [Github](https://github.com/)
+
+
+As ferramentas empregadas no projeto são:
+
+- Editor de código: Visual Studio Code e Visual Studio;
+- Ferramentas de comunicação: Whatsapp e Discord;
+- Ferramenta para Gerenciamento do Projeto: GitHub Projects;
+- Ferramentas para Criação de Diagramas: draw.io;
+
+Todas as ferramentas selecionadas pelo grupo foram escolhidas por ter uma compatibilidade com o mercado e ser de fácil acesso para todos, visando entregar valor para o usuário final. Foram selecionadas ferramentas que são familiares, em diferentes aspectos, para cada membro do grupo.

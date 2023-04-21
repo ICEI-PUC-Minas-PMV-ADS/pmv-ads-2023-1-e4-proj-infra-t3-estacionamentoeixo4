@@ -35,6 +35,33 @@ Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, 
 
 Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
 
+### **Api Producer**
+
+|  Tecnologia | Descrição  | 
+| :------------: | :------------ |
+| JavaScript|  Linguagem de programação |
+| Nest |  Framework de desenvolvimento  | 
+| PostgreSQL  |  Banco de dados relacional | 
+| Firebase |  Banco de dados não relacional | 
+| Apache Kafka | Streaming de eventos entre APIS 
+
+<br>
+
+### **Api Consumer**
+
+|  Tecnologia | Descrição  | 
+| :------------: | :------------ |
+| C Sharp|  Linguagem de programação |
+| .Net |  Framework de desenvolvimento  | 
+| PostgreSQL  |  Banco de dados relacional | 
+| Firebase |  Banco de dados não relacional | 
+| Apache Kafka | Streaming de eventos entre APIS 
+
+
+<br>
+
+![Relação entre as tecnologias](img/arquitetura.png)
+
 ## Hospedagem
 
 Explique como a hospedagem e o lançamento da plataforma foi feita.
