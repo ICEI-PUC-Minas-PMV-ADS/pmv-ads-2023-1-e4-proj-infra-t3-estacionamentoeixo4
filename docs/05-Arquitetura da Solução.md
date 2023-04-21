@@ -27,11 +27,13 @@ Usamos dois bancos de dados o MySQL para armazenar os dados da aplicação e o F
 
 ## Modelo Físico
 
-Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
+<li><a href="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/blob/main/src/Srcipt.sql"> Scripts SQL de DML</a></li> 
+
+<br>
 
 ## Tecnologias Utilizadas
 
-<br>
+
 
 ### **Api Producer**
 
