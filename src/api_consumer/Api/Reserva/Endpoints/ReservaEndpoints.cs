@@ -11,8 +11,8 @@ namespace api_consumer.Api.Reserva.Endpoints
         public static void MapReservaEndpoints(this WebApplication app)
         {
 
-            KafkaConsumer Consumer = new KafkaConsumer();
-            Consumer.ReciveMessage();
+            // KafkaConsumer Consumer = new KafkaConsumer();
+            // Consumer.ReciveMessage();
 
             app.MapGet("/", () => "Welcome to Consumer Api!");
 

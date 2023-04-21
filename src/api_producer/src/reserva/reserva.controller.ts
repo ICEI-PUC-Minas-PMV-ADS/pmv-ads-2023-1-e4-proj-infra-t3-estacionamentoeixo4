@@ -11,16 +11,16 @@ import { CreateReservaDto } from './dto/create-reserva.dto';
 import { CanceledReservaDto } from './dto/cancelar-reserva.dto';
 import { ClientKafka } from '@nestjs/microservices';
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
-
 @ApiTags('Reserva')
 @Controller('reserva')
 export class ReservaController implements OnModuleInit {
   constructor(
     @Inject('KAFKA_CONSUMER_RESERVA') private clientKafka: ClientKafka,
   ) {}
+
   async onModuleInit() {
-    this.clientKafka.subscribeToResponseOf('reservar');
-    this.clientKafka.subscribeToResponseOf('cancelar_reserva');
+    this.clientKafka.connect();
+    this.clientKafka.subscribeToResponseOf('reservar_vaga');
   }
 
   @Post()
@@ -33,7 +33,7 @@ export class ReservaController implements OnModuleInit {
   async create(@Body() createReservaDto: CreateReservaDto) {
     //Envia os dados para o kafka e espera a resposta
     this.clientKafka
-      .send('reservar', JSON.stringify(createReservaDto))
+      .send('reservar_vaga', JSON.stringify(createReservaDto))
       .subscribe({
         next: (reply: any) => {
           console.log(reply);
