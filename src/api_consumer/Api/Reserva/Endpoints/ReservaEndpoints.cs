@@ -13,68 +13,119 @@ namespace api_consumer.Api.Reserva.Endpoints
 
             app.MapGet("/v1/reserva", async (IReservaRepo repo, IMapper mapper) =>
             {
-                var reservas = await repo.GetAllReservas();
+                try
+                {
+                    var reservas = await repo.GetAllReservas();
 
-                return Results.Ok(mapper.Map<IEnumerable<ReservaReadDto>>(reservas));
+                    return Results.Ok(mapper.Map<IEnumerable<ReservaReadDto>>(reservas));
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return Results.BadRequest(ex.Message);
+                }
+                catch (Exception)
+                {
+                    return Results.StatusCode(500);
+                }
+                
             });
 
             //Implementar o GetReservaEntityById
            app.MapGet("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) =>
            {
-               var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
-
-               if (reserva != null) 
+               try
                {
-                   return Results.Ok(mapper.Map<ReservaReadDto>(reserva));
+                   var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
+                   if (reserva != null)
+                   {
+                       return Results.Ok(mapper.Map<ReservaReadDto>(reserva));
+                   }  
+                   return Results.NotFound();
+                                                          
+                                 
                }
-               return Results.NotFound();
-             
+               catch (InvalidOperationException ex)
+               {
+                   return Results.BadRequest(ex.Message);
+               }
+               catch (Exception)
+               {
+                   return Results.StatusCode(500);
+               }             
            });
 
             app.MapPost("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaCreateDto reservaCreateDto) =>
             {
-                var reserva = mapper.Map<ReservaEntity>(reservaCreateDto);
-
-                reserva.IdCliente = idCliente;
-                reserva.IdEstacionamento = idEstacionamento;
-
-                await repo.CreateReserva(reserva);
-
-                await repo.SaveChanges();
-
-            });
-
-            app.MapPut("/v1/reservas/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaUpdateDto reservaUpdateDto) => {
-                var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
-                if (reserva == null)
+                try
                 {
-                    return Results.NotFound();
+                    var reserva = mapper.Map<ReservaEntity>(reservaCreateDto);
+
+                    reserva.IdCliente = idCliente;
+                    reserva.IdEstacionamento = idEstacionamento;
+
+                    await repo.CreateReserva(reserva);
+
+                    await repo.SaveChanges();
+
+                    return Results.Ok();
                 }
-
-                mapper.Map(reservaUpdateDto, reserva);
-
-                await repo.SaveChanges();
-
-                return Results.NoContent();
-            });
-
-            app.MapDelete("/v1/commands/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) => {
-                var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
-                if (reserva == null)
+                catch (InvalidOperationException ex)
                 {
-                    return Results.NotFound();
+                    return Results.BadRequest(ex.Message);
                 }
-
-                repo.DeleteReserva(reserva);
-
-                await repo.SaveChanges();
-
-                return Results.NoContent();
-
+                catch (Exception)
+                {
+                    return Results.StatusCode(500);
+                }
             });
 
+            app.MapPut("/v1/reservas/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaUpdateDto reservaUpdateDto) => 
+            {
+                try
+                {
+                    var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
+                    if (reserva != null)
+                    {
+                        mapper.Map(reservaUpdateDto, reserva);
+                        await repo.SaveChanges();
+                        return Results.Ok();
+                    }
+                    return Results.NotFound();
+                   
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return Results.BadRequest(ex.Message);
+                }
+                catch (Exception)
+                {
+                    return Results.StatusCode(500);
+                }
+            });
 
-
+            app.MapDelete("/v1/commands/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) => 
+            {
+                try
+                {
+                    var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
+                    if (reserva != null)
+                    {
+                        repo.DeleteReserva(reserva);
+                        await repo.SaveChanges();
+                        return Results.Ok();
+                    }
+                    return Results.NotFound();
+                   
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return Results.BadRequest(ex.Message);
+                }
+                catch (Exception)
+                {
+                    return Results.StatusCode(500);
+                }
+            });
 
         }
     }
