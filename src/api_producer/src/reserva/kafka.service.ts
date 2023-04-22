@@ -33,7 +33,7 @@ export class KafkaService {
     );
 
     this.consumer.on('message', async (message: Message) => {
-      console.log('Kafka Message:', JSON.parse(message.value.toString()));
+      console.log('Kafka Message:', message.value.toString());
     });
   }
 
