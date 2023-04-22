@@ -42,7 +42,7 @@ export class ReservaController implements OnModuleInit {
     //Envia os dados para o kafka e espera a resposta
     this.kafkaService.sendMessage(
       'reservar_vaga',
-      JSON.stringify(createReservaDto),
+      JSON.stringify({ data: createReservaDto, method: 'create' }),
     );
     await this.kafkaService.consumer.on('message', (message) => {
       console.log('Kafka Message:', message);

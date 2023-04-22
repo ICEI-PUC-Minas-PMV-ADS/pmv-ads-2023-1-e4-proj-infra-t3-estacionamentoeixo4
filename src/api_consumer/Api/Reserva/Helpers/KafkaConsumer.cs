@@ -1,31 +1,30 @@
-using Confluent.Kafka;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using api_consumer.Api.Reserva.Dto;
 using api_consumer.Api.Reserva.Entity;
+using Confluent.Kafka;
 using api_consumer.Api.Reserva.Repository;
+using api_consumer.Api.Reserva.Helpers;
 using AutoMapper;
+using Microsoft.VisualBasic.CompilerServices;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Utils = Microsoft.VisualBasic.CompilerServices.Utils;
 
 public class KafkaConsumer : BackgroundService
 {
     private readonly ConsumerConfig _consumerConfig;
     private readonly ProducerConfig _producerConfig;
 
-    private readonly IReservaRepo _reservaRepo;
-    private readonly IMapper _mapper;
+    private readonly IReservaRepo _iReservaRepo;
+    private readonly ReservaRepo _reservaRepo;
+    private readonly IMapper _mapper;   
     
-    public KafkaConsumer()
+    public KafkaConsumer(AppDbContext dbContext)
     {
         _consumerConfig = new ConsumerConfig
         {
             BootstrapServers = "host.docker.internal:9094",
             GroupId = "reserva-consumer-group",
             AutoOffsetReset = AutoOffsetReset.Earliest,
-            EnableAutoCommit = false, // desabilita o modo AutoCommit
+            EnableAutoCommit = true, // desabilita o modo AutoCommit
         };
 
         _producerConfig = new ProducerConfig
@@ -33,6 +32,8 @@ public class KafkaConsumer : BackgroundService
 
             BootstrapServers = "host.docker.internal:9094"
         };
+
+        _reservaRepo = new ReservaRepo(dbContext);
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -46,21 +47,24 @@ public class KafkaConsumer : BackgroundService
             try
             {
                 var message = consumer.Consume(stoppingToken);
-                Console.WriteLine($"Received message: {message.Value} at {message.TopicPartitionOffset}");
+                var kafkaJson = JObject.Parse(message.Value);
                 
-                Console.WriteLine(">>>>>>>>>>>>> before.reservaModel");
+                Console.WriteLine($"Received message: {kafkaJson} at {message.TopicPartitionOffset}");
 
-                //ReservaCreateDto reservaModel = JsonConvert.DeserializeObject<ReservaCreateDto>(message.Value);
-                
-                //Console.WriteLine(">>>>>>>>>>>>> reservaModel.id_veiculo: " + reservaModel.id_veiculo);
-                //Console.WriteLine(">>>>>>>>>>>>> reservaModel.id_cliente: " + reservaModel.id_cliente);
+                try
+                {
+                    ReservaEntity reserva = UtilityFunctions.parseKafkaMessageToReservaDTO(kafkaJson["data"].ToString());
+                    Console.WriteLine(">>>>>>>>>> reserva: " + reserva.ToString());
                     
-                //var reserva = _mapper.Map<ReservaEntity>(reservaModel);
-
-                //await _reservaRepo.CreateReserva(reserva);
-
-                //await _reservaRepo.SaveChanges();
-
+                    await _reservaRepo.CreateReserva(reserva);
+                    await _reservaRepo.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(">>>>>>>>>>> error: " + e);
+                    throw;
+                }
+                
 
                 // // Processa a mensagem e envia a resposta para um tópico de resposta
                 var response = $"Response to message {message.Value}";

@@ -36,13 +36,10 @@ namespace api_consumer.Api.Reserva.Endpoints
 
             });
 
-            app.MapPost("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento, ReservaCreateDto reservaCreateDto) =>
+            app.MapPost("/v1/reserva/", async (IReservaRepo repo, IMapper mapper, ReservaCreateDto reservaCreateDto) =>
             {
                 var reserva = mapper.Map<ReservaEntity>(reservaCreateDto);
-
-                reserva.IdCliente = idCliente;
-                reserva.IdEstacionamento = idEstacionamento;
-
+                
                 await repo.CreateReserva(reserva);
 
                 await repo.SaveChanges();

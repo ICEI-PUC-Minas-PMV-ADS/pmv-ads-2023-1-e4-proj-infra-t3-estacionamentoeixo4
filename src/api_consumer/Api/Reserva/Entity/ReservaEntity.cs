@@ -5,18 +5,18 @@ namespace api_consumer.Api.Reserva.Entity
     public class ReservaEntity
     {
         [Key]
-        public int IdCliente { get; set; }
-
+        public int id_cliente { get; set; }
+        
         [Key]
-        public int IdEstacionamento { get; set; }
-
+        public int id_veiculo { get; set; }
+        
         [Required]
-        public int Duracao { get; set; }
-
+        public int id_estacionamento { get; set; }
+        
         [Required]
-        public DateTime HorarioReserva { get; set; }
-
+        public int duracao { get; set; }
+        
         [Required]
-        public int IdVeiculo { get; set; }
+        public DateTime horario_reserva { get; set; }
     }
 }

@@ -18,8 +18,5 @@ namespace api_consumer.Api.Reserva.Dto
         
         [Required]
         public DateTime horario_reserva { get; set; }
-        
-        [Required]
-        public string metodo { get; set; }
     }
 }
