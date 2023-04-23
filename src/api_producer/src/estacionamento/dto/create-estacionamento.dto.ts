@@ -48,8 +48,7 @@ export class CreateEstacionamentoDto {
   @MinLength(14)
   @IsNotEmpty()
   @ApiProperty({
-    type: 'string',
-    default: '12232423000133',
+    type: 'string'
   })
   @MaxLength(14)
   cnpj: string;
