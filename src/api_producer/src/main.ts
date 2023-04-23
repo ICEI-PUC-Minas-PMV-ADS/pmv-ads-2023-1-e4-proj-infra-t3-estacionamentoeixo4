@@ -2,13 +2,16 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import helmet from 'helmet';
+import { version } from '../package.json';
 import 'dotenv/config';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 /**
  * @function bootsrap
  * Cria o servidor express
  */
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   //Validações globais
   app.useGlobalPipes(new ValidationPipe());
 
@@ -42,6 +45,17 @@ async function bootstrap() {
   app.enableCors();
   //Seta o prefix inicial da rota http:localhost:3000/api_producer
   app.setGlobalPrefix('api_producer');
+
+  if (process.env.ENVIRONMENT === 'dev') {
+    const config = new DocumentBuilder()
+      .setTitle('Why Park')
+      .addBearerAuth()
+      .setDescription('Why Park API Documentation')
+      .setVersion(version)
+      .build();
+    const documentation = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('api', app, documentation);
+  }
 
   //Listener server express
   const port = process.env.PORT || 3000;

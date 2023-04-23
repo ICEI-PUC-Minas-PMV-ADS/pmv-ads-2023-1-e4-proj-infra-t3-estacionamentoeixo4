@@ -9,9 +9,8 @@ import {
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-client.dto';
 import { PrismaService } from '@src/prisma/prisma.service';
-import { Cliente } from '@prisma/client';
 import { Cache } from 'cache-manager';
-
+import { Cliente } from '@prisma/client';
 @Injectable()
 export class ClienteService {
   constructor(
@@ -45,41 +44,68 @@ export class ClienteService {
       );
     }
 
-    //Guarda o cliente criado no banco para ser recuperado quando logar no cache
-    await this.clienteCache.set(
-      `user_crated_${clienteResult.id}`,
-      clienteResult,
-    );
     return clienteResult;
   }
 
   async findAll() {
-    const clientesInCache: Cliente[] = await this.clienteCache.get(
-      'clientes_cache',
-    );
-
-    if (clientesInCache) {
-      return clientesInCache;
-    }
     const clientesResultDB = await this.clientRepository.cliente.findMany();
 
     if (!clientesResultDB) throw new NotFoundException('Não existe clientes!');
 
-    await this.clienteCache.set('clientes_cache', clientesResultDB);
-
     return clientesResultDB;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number) {
+    const clienteResultDB = await this.clientRepository.cliente.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    if (!clienteResultDB) throw new NotFoundException('Cliente não existente!');
+
+    return clienteResultDB;
   }
 
-  update(id: number, updateClienteDto: UpdateClienteDto) {
-    const body = updateClienteDto;
-    return `This action updates a #${id} ${body} user`;
+  async findEmail(email: string) {
+    const clienteResultDB = await this.clientRepository.cliente.findUnique({
+      where: {
+        email,
+      },
+    });
+    return clienteResultDB;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async update(id: number, updateClienteDto: UpdateClienteDto) {
+    const clienteUpdateResult = this.clientRepository.cliente.update({
+      where: {
+        id,
+      },
+      data: updateClienteDto,
+    });
+
+    if (!clienteUpdateResult) {
+      throw new InternalServerErrorException(
+        `Não foi possível atualizar o cliente `,
+      );
+    }
+
+    return clienteUpdateResult;
+  }
+
+  async remove(id: number) {
+    const clienteDeleteResult = this.clientRepository.cliente.delete({
+      where: {
+        id,
+      },
+    });
+
+    if (!clienteDeleteResult) {
+      throw new InternalServerErrorException(
+        `Não foi possível remover o cliente `,
+      );
+    }
+
+    return clienteDeleteResult;
   }
 }
