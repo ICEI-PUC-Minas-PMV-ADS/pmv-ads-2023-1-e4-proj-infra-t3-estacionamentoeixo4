@@ -76,7 +76,14 @@ Após ter sido feita a análise das informações acima, desenvolvemos todo o ge
 
 As ferramentas empregadas no projeto são:
 
-- Editor de código.
-- Ferramentas de comunicação
 
-O editor de código foi escolhido porque ele possui uma integração com o sistema de versão. As ferramentas de comunicação utilizadas possuem integração semelhante e por isso foram selecionadas. Por fim, para criar diagramas utilizamos essa ferramenta por melhor captar as necessidades da nossa solução.
+
+
+- Editor de código: Visual Studio Code e Visual Studio;
+- Ferramentas de comunicação: Whatsapp e Discord;
+- Ferramenta para Gerenciamento do Projeto: GitHub Projects;
+- Ferramentas para Criação de Diagramas: draw.io;
+<br>
+
+> Todas as ferramentas selecionadas pelo grupo foram escolhidas por ter uma compatibilidade com o mercado e ser de fácil acesso para todos, visando entregar valor para o usuário final. Foram selecionadas ferramentas que são familiares, em diferentes aspectos, para cada membro do grupo.
+

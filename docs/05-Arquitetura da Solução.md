@@ -13,38 +13,53 @@ Usamos dois bancos de dados o MySQL para armazenar os dados da aplicação e o F
 
 ## Diagrama de Classes
 
-O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
-
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Classes”.
-
-> - [Diagramas de Classes - Documentação da IBM](https://www.ibm.com/docs/pt-br/rational-soft-arch/9.6.1?topic=diagrams-class)
-> - [O que é um diagrama de classe UML? | Lucidchart](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
+![Diagrama de Classes drawio (1)](https://user-images.githubusercontent.com/88891675/233728019-a9226887-49d9-40fe-b770-945e5031e5a6.png)
 
 ## Modelo ER
 
-O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.]
+![ModeloER drawio](https://user-images.githubusercontent.com/88891675/233728086-6a9e949a-2d2f-44dc-8211-2140a21d33fa.png)
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Modelo ER”.
-
-> - [Como fazer um diagrama entidade relacionamento | Lucidchart](https://www.lucidchart.com/pages/pt/como-fazer-um-diagrama-entidade-relacionamento)
 
 ## Esquema Relacional
 
-O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
- 
-As referências abaixo irão auxiliá-lo na geração do artefato “Esquema Relacional”.
+![Esquema Relacional drawio](https://user-images.githubusercontent.com/88891675/233728164-83883aa0-3f46-48e8-bde9-9c4ca3cd0cb7.png)
 
-> - [Criando um modelo relacional - Documentação da IBM](https://www.ibm.com/docs/pt-br/cognos-analytics/10.2.2?topic=designer-creating-relational-model)
 
 ## Modelo Físico
 
-Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
+<li><a href="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/blob/main/src/Srcipt.sql"> Script SQL</a></li> 
+
+<br>
 
 ## Tecnologias Utilizadas
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
 
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+
+### **Api Producer**
+
+|  Tecnologia | Descrição  | 
+| :------------: | :------------ |
+| JavaScript|  Linguagem de programação |
+| NestJs |  Framework de desenvolvimento  | 
+| PostgreSQL  |  Banco de dados relacional | 
+| Firebase |  Banco de dados não relacional | 
+| Apache Kafka | Streaming de eventos entre APIS 
+
+<br>
+
+### **Api Consumer**
+
+|  Tecnologia | Descrição  | 
+| :------------: | :------------ |
+| C Sharp|  Linguagem de programação |
+| .Net |  Framework de desenvolvimento  | 
+| PostgreSQL  |  Banco de dados relacional | 
+| Apache Kafka | Streaming de eventos entre APIS 
+
+
+<br>
+
+![Relação entre as tecnologias](img/arquitetura.png)
 
 ## Hospedagem
 
