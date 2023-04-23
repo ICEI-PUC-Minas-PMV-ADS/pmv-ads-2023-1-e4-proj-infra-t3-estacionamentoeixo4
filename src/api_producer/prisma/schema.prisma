@@ -16,7 +16,6 @@ model Cliente {
   updatedAt DateTime  @default(now())
   Veiculo   Veiculo[]
 
-  // Nome da tabela @@map
   @@map("cliente")
 }
 
@@ -24,27 +23,25 @@ model Veiculo {
   id         Int      @id @default(autoincrement())
   placa      String   @db.VarChar(10)
   modelo     String   @db.VarChar(20)
-  cliente    Cliente  @relation(fields: [id_cliente], references: [id])
   id_cliente Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
+  cliente    Cliente  @relation(fields: [id_cliente], references: [id])
 
-  // Nome da tabela @@map
   @@map("veiculo")
 }
 
 model Estacionamento {
-  id                  Int     @id @default(autoincrement())
-  preco               Decimal @db.Decimal(9, 2)
+  id                  Int                                @id @default(autoincrement())
+  preco               Decimal                            @db.Decimal(9, 2)
   vagas_preferenciais Int
   vagas_gerais        Int
-  razao_social        String  @db.VarChar(255)
-  cnpj                String  @unique @db.Char(14)
-
-  createdAt       DateTime                           @default(now())
-  updatedAt       DateTime                           @default(now())
-  administradores EstacionamentoAndAdministradores[]
-  Endereco        Endereco[]
+  razao_social        String                             @db.VarChar(255)
+  cnpj                String                             @unique @db.Char(14)
+  createdAt           DateTime                           @default(now())
+  updatedAt           DateTime                           @default(now())
+  Endereco            Endereco[]
+  administradores     EstacionamentoAndAdministradores[]
 
   @@map("estacionamento")
 }
@@ -57,15 +54,14 @@ model Administrador {
   email           String                             @unique
   estacionamentos EstacionamentoAndAdministradores[]
 
-  // Nome da tabela @@map
   @@map("administrador")
 }
 
 model EstacionamentoAndAdministradores {
-  estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
   id_estacionamento Int
-  administrador     Administrador  @relation(fields: [id_administrador], references: [id])
   id_administrador  Int
+  administrador     Administrador  @relation(fields: [id_administrador], references: [id])
+  estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
 
   @@id([id_estacionamento, id_administrador])
 }
@@ -78,6 +74,6 @@ model Endereco {
   numero            Int
   cidade            String         @db.VarChar(50)
   uf                String         @db.Char(2)
-  estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
   id_estacionamento Int
+  estacionamento    Estacionamento @relation(fields: [id_estacionamento], references: [id])
 }
