@@ -12,8 +12,8 @@ using api_consumer.Api.Reserva.Repository;
 namespace api_consumer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230423181249_ColunaCanceladoEm")]
-    partial class ColunaCanceladoEm
+    [Migration("20230423201112_NovaColunaCancelado")]
+    partial class NovaColunaCancelado
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,9 +35,9 @@ namespace api_consumer.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("id_estacionamento");
 
-                    b.Property<DateTime?>("CanceladoEm")
+                    b.Property<DateTime?>("CanceledAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("cancelado_em");
+                        .HasColumnName("canceledAt");
 
                     b.Property<int>("Duracao")
                         .HasColumnType("integer")

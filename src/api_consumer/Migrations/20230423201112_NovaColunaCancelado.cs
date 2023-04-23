@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace api_consumer.Migrations
 {
     /// <inheritdoc />
-    public partial class ColunaCanceladoEm : Migration
+    public partial class NovaColunaCancelado : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,7 @@ namespace api_consumer.Migrations
                     duracao = table.Column<int>(type: "integer", nullable: false),
                     horario_reserva = table.Column<DateTime>(type: "timestamp", nullable: false),
                     id_veiculo = table.Column<int>(type: "integer", nullable: false),
-                    cancelado_em = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    canceledAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {

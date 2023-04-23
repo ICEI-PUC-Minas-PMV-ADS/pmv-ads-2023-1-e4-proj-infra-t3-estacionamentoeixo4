@@ -19,6 +19,6 @@ namespace api_consumer.Api.Reserva.Entity
         [Required]
         public int IdVeiculo { get; set; }
 
-        public DateTime? CanceladoEm { get; set; }
+        public DateTime? CanceledAt { get; set; }
     }
 }
