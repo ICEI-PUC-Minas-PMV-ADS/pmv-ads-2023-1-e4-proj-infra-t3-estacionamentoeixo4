@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ReservaController } from './reserva.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { Partitioners } from 'kafkajs';
+import { KafkaService } from './kafka.service';
 
 @Module({
   imports: [
@@ -12,13 +14,17 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
           client: {
             brokers: ['host.docker.internal:9094'],
           },
+          producer: {
+            createPartitioner: Partitioners.DefaultPartitioner,
+          },
           consumer: {
-            groupId: 'reserva-' + Math.random(),
+            groupId: 'reserva-consumer-group',
           },
         },
       },
     ]),
   ],
   controllers: [ReservaController],
+  providers: [KafkaService],
 })
 export class ReservaModule {}

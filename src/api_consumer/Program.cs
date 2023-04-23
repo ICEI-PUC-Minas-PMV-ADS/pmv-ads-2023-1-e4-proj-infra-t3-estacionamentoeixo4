@@ -1,6 +1,6 @@
-using api_consumer.Api.Reserva.Endpoints;
 using api_consumer.Api.Reserva.Helpers;
 using api_consumer.Api.Reserva.Repository;
+using Kafka.Public;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,12 +15,10 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api de Estudo v1");
-});
-
-app.MapReservaEndpoints();
+// Setup do Kafka
+var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<AppDbContext>();
+KafkaConsumer Consumer = new KafkaConsumer(dbContext);
+CancellationToken token = new();
+Consumer.StartAsync(token);
 
 app.Run();

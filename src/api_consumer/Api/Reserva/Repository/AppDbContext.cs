@@ -13,12 +13,13 @@ namespace api_consumer.Api.Reserva.Repository
         {
             modelBuilder.Entity<ReservaEntity>(entity =>
             {
-                entity.HasKey(r => new { r.IdCliente, r.IdEstacionamento });
-                entity.Property(e => e.IdCliente).HasColumnName("id_cliente").IsRequired();
-                entity.Property(e => e.IdEstacionamento).HasColumnName("id_estacionamento").IsRequired();
-                entity.Property(e => e.Duracao).HasColumnName("duracao").IsRequired();
-                entity.Property(e => e.HorarioReserva).HasColumnName("horario_reserva").HasColumnType("timestamp").IsRequired();
-                entity.Property(e => e.IdVeiculo).HasColumnName("id_veiculo").IsRequired();
+                entity.HasKey(r => new { r.id_cliente, r.id_estacionamento });
+                entity.Property(e => e.id_cliente).IsRequired();
+                entity.Property(e => e.id_estacionamento).IsRequired();
+                entity.Property(e => e.duracao).IsRequired();
+                entity.Property(e => e.horario_reserva).IsRequired();
+                entity.Property(e => e.id_veiculo).IsRequired();
+                entity.Property(e => e.canceledAt);
             });
 
             // Debater cominicação com o outro back-end
