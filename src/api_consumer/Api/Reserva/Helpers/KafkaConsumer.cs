@@ -3,20 +3,17 @@ using Confluent.Kafka;
 using api_consumer.Api.Reserva.Repository;
 using api_consumer.Api.Reserva.Helpers;
 using AutoMapper;
-using Microsoft.VisualBasic.CompilerServices;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Utils = Microsoft.VisualBasic.CompilerServices.Utils;
+using api_consumer.Api.Reserva.Dto;
 
 public class KafkaConsumer : BackgroundService
 {
     private readonly ConsumerConfig _consumerConfig;
     private readonly ProducerConfig _producerConfig;
 
-    private readonly IReservaRepo _iReservaRepo;
     private readonly ReservaRepo _reservaRepo;
-    private readonly IMapper _mapper;   
-    
+    private readonly IMapper _mapper;
+
     public KafkaConsumer(AppDbContext dbContext)
     {
         _consumerConfig = new ConsumerConfig
@@ -24,7 +21,7 @@ public class KafkaConsumer : BackgroundService
             BootstrapServers = "host.docker.internal:9094",
             GroupId = "reserva-consumer-group",
             AutoOffsetReset = AutoOffsetReset.Earliest,
-            EnableAutoCommit = true, // desabilita o modo AutoCommit
+            EnableAutoCommit = true,
         };
 
         _producerConfig = new ProducerConfig
@@ -42,31 +39,51 @@ public class KafkaConsumer : BackgroundService
         consumer.Subscribe("reservar_vaga");
 
         using var producer = new ProducerBuilder<string, string>(_producerConfig).Build();
+
         while (true)
         {
             try
             {
                 var message = consumer.Consume(stoppingToken);
                 var kafkaJson = JObject.Parse(message.Value);
-                
+                var methodName = kafkaJson["method"].ToString();
+                var data = kafkaJson["data"].ToString();
+
                 Console.WriteLine($"Received message: {kafkaJson} at {message.TopicPartitionOffset}");
 
-                try
+                if (methodName == "create")
                 {
-                    ReservaEntity reserva = UtilityFunctions.parseKafkaMessageToReservaDTO(kafkaJson["data"].ToString());
-                    Console.WriteLine(">>>>>>>>>> reserva: " + reserva.ToString());
-                    
-                    await _reservaRepo.CreateReserva(reserva);
-                    await _reservaRepo.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(">>>>>>>>>>> error: " + e);
-                    throw;
-                }
-                
+                    try
+                    {
+                        ReservaEntity reserva = UtilityFunctions.parseKafkaMessageToReservaDTO(data);
 
-                // // Processa a mensagem e envia a resposta para um tópico de resposta
+                        await _reservaRepo.CreateReserva(reserva);
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Kafka.consumer.createReserva.error: " + e);
+                        throw;
+                    }
+                }
+
+                if (methodName == "update")
+                {
+                    try
+                    {
+
+                        ReservaCancellationDto reservaCancellation = UtilityFunctions.parseKafkaMessageToReservaCancellationDto(data);
+
+                        await _reservaRepo.UpdateReserva(reservaCancellation);
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Kafka.consumer.createReserva.error: " + e);
+                        throw;
+                    }
+                }
+
                 var response = $"Response to message {message.Value}";
                 var responseTopic = new TopicPartition("reservar_vaga.reply", message.TopicPartition.Partition);
                 var responseMessage = new Message<string, string>
@@ -74,8 +91,9 @@ public class KafkaConsumer : BackgroundService
                     Key = "reserva",
                     Value = response
                 };
+
                 await producer.ProduceAsync(responseTopic, responseMessage);
-                // Confirma a mensagem
+
                 consumer.Commit(message);
             }
             catch (ConsumeException ex)

@@ -1,4 +1,5 @@
 using System.Data;
+using api_consumer.Api.Reserva.Dto;
 using api_consumer.Api.Reserva.Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,17 @@ namespace api_consumer.Api.Reserva.Repository
             await _context.SaveChangesAsync();
         }
 
+        public async Task UpdateReserva(ReservaCancellationDto reserva)
+        {
+            var existingReserva = await _context.reserva.FindAsync(reserva.id_cliente, reserva.id_estacionamento);
+
+            if (existingReserva != null && reserva != null)
+            {
+                existingReserva.canceledAt = reserva.canceledAt;
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public void DeleteReserva(ReservaEntity reserva)
         {
             if (reserva == null)
@@ -45,10 +57,10 @@ namespace api_consumer.Api.Reserva.Repository
 
         public async Task SaveChanges()
         {
-            
+
             await _context.SaveChangesAsync();
         }
-        
+
         public async Task CloseDb()
         {
             if (_context.Database.GetDbConnection().State == ConnectionState.Open)

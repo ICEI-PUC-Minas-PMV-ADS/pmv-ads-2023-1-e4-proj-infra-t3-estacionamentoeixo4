@@ -51,30 +51,27 @@ export class ReservaController implements OnModuleInit {
     await this.kafkaService.consumer.on('error', (error) => {
       console.error('Kafka Error:', error);
     });
-    // .subscribe({
-    //   next: (reply: any) => {
-    //     console.log(reply);
-    //   },
-    // });
   }
 
-  @Patch(':id_reserva')
+  @Patch()
   @ApiResponse({
     status: 200,
     description: 'Reserva cancelada com sucesso!',
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
-  @ApiBody({ type: CanceledReservaDto, description: 'Reserva cancelada' })
-  update(
-    @Param('id_reserva') id: string,
-    @Body() ReservaCanceledDto: CanceledReservaDto,
-  ) {
-    // this.clientKafka
-    //   .send('cancelar_reserva', JSON.stringify(ReservaCanceledDto))
-    //   .subscribe({
-    //     next: (replay: any) => {
-    //       console.log(replay);
-    //     },
-    //   });
+  @ApiBody({ type: [CanceledReservaDto], description: 'Reserva cancelada' })
+  async update(@Body() canceledReservaDto: CanceledReservaDto) {
+    this.kafkaService.sendMessage(
+      'reservar_vaga',
+      JSON.stringify({ data: canceledReservaDto, method: 'update' }),
+    );
+
+    await this.kafkaService.consumer.on('message', (message) => {
+      console.log('Kafka Message:', message);
+    });
+
+    await this.kafkaService.consumer.on('error', (error) => {
+      console.error('Kafka Error:', error);
+    });
   }
 }

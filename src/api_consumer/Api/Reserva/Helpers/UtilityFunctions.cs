@@ -8,16 +8,15 @@ public class UtilityFunctions
 {
     public static ReservaEntity parseKafkaMessageToReservaDTO(String kafkaMessage)
     {
-        Console.WriteLine(">>>>>>>>>>> reservaModel.before: " + kafkaMessage);
-        ReservaEntity reservaModel = JsonConvert.DeserializeObject<ReservaEntity>(kafkaMessage);
-        
-        Console.WriteLine(">>>>>>>>>>> reservaModel: " + reservaModel.id_cliente);
-        Console.WriteLine(">>>>>>>>>>> reservaModel: " + reservaModel.id_estacionamento);
-        Console.WriteLine(">>>>>>>>>>> reservaModel: " + reservaModel.id_veiculo);
-        Console.WriteLine(">>>>>>>>>>> reservaModel: " + reservaModel.horario_reserva);
-        Console.WriteLine(">>>>>>>>>>> reservaModel: " + reservaModel.duracao);
 
-        Console.WriteLine(">>>>>>>>>>> reservaModel.horario_reserva: " + reservaModel.horario_reserva.GetType());
+        ReservaEntity reservaModel = JsonConvert.DeserializeObject<ReservaEntity>(kafkaMessage);
+        return reservaModel;
+    }
+
+    public static ReservaCancellationDto parseKafkaMessageToReservaCancellationDto(String kafkaMessage)
+    {
+
+        ReservaCancellationDto reservaModel = JsonConvert.DeserializeObject<ReservaCancellationDto>(kafkaMessage);
         return reservaModel;
     }
 }

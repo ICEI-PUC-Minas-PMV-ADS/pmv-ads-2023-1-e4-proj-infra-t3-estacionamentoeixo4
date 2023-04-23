@@ -19,6 +19,7 @@ namespace api_consumer.Api.Reserva.Repository
                 entity.Property(e => e.duracao).IsRequired();
                 entity.Property(e => e.horario_reserva).IsRequired();
                 entity.Property(e => e.id_veiculo).IsRequired();
+                entity.Property(e => e.canceledAt);
             });
 
             // Debater cominicação com o outro back-end
