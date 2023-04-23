@@ -1,7 +1,7 @@
 # Programação de Funcionalidades
 
 
-#Implementação da Web API Rest e configurações
+# Implementação da Web API Rest e configurações
 
 
 ## Rotas
@@ -11,8 +11,7 @@
 `
 
 <img src="img/rota_cliente.png"/>
-`A rota Cliente foi criada para lidar com a transação dos dados de um dos usuários finais 
-`
+`A rota Cliente foi criada para lidar com a transação dos dados de um dos usuários finais`
 
 <img src="img/rota_veiculo.png"/>
 
@@ -33,7 +32,6 @@
 
 `A rota Reserva foi criada para lidar com as transaçôes dos dados feitas pelos usuarios finais atráves de microservicos de mensageria em busca de escalabilidade e segurança 
 `
-
 
 # Implementação das funcionalidades que envolvem o banco de dados NoSQL
 
