@@ -23,7 +23,6 @@ export class CanceledReservaDto {
   @IsDateString()
   @ApiProperty({
     description: 'Cancelar  reserva',
-    // default: '2023-04-23T18:50:29.190Z',
     type: 'string',
   })
   @IsNotEmpty()

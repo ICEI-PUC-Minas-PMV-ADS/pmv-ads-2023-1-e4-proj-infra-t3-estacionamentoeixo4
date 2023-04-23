@@ -19,6 +19,6 @@ namespace api_consumer.Api.Reserva.Entity
         [Required]
         public DateTime horario_reserva { get; set; }
 
-        public DateTime canceledAt { get; set; }
+        public DateTime? canceledAt { get; set; }
     }
 }
