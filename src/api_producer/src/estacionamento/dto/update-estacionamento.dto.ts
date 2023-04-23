@@ -9,6 +9,7 @@ import {
 } from 'class-validator';
 import { CreateEstacionamentoDto } from './create-estacionamento.dto';
 import { ApiProperty } from '@nestjs/swagger';
+import { Prisma } from '@prisma/client';
 
 export class UpdateEstacionamentoDto extends PartialType(
   CreateEstacionamentoDto,
@@ -20,7 +21,7 @@ export class UpdateEstacionamentoDto extends PartialType(
     minimum: 6,
     default: 12340,
   })
-  preco: number;
+  preco: Prisma.Decimal;
 
   @IsInt()
   @IsNotEmpty()

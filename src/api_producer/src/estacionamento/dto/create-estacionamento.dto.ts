@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Prisma } from '@prisma/client';
 import {
   IsString,
   MinLength,
@@ -16,7 +17,7 @@ export class CreateEstacionamentoDto {
     minimum: 6,
     default: 12340,
   })
-  preco: number;
+  preco: Prisma.Decimal;
 
   @IsInt()
   @IsNotEmpty()
@@ -47,8 +48,7 @@ export class CreateEstacionamentoDto {
   @MinLength(14)
   @IsNotEmpty()
   @ApiProperty({
-    type: 'string',
-    default: '12.232.423/0001-33',
+    type: 'string'
   })
   @MaxLength(14)
   cnpj: string;
