@@ -22,19 +22,19 @@ namespace api_consumer.Api.Reserva.Repository
             await _context.AddAsync(reserva);
         }
 
-        public void DeleteReserva(ReservaEntity reserva)
-        {
-            if (reserva == null)
-            {
-                throw new ArgumentNullException(nameof(reserva));
-            }
-            _context.reserva.Remove(reserva);
-        }
+        //public void DeleteReserva(ReservaEntity reserva)
+        //{
+        //    if (reserva == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(reserva));
+        //    }
+        //    _context.reserva.Remove(reserva);
+        //}
 
-        public async Task<IEnumerable<ReservaEntity>> GetAllReservas()
-        {
-            return await _context.reserva!.ToListAsync();
-        }
+        //public async Task<IEnumerable<ReservaEntity>> GetAllReservas()
+        //{
+        //    return await _context.reserva!.ToListAsync();
+        //}
 
         public async Task<ReservaEntity>? GetReservaEntityById(int idCliente, int idEstacionamento)
         {

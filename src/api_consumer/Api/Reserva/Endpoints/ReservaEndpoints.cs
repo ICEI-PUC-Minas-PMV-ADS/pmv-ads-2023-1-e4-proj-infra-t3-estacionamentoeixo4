@@ -11,24 +11,24 @@ namespace api_consumer.Api.Reserva.Endpoints
         {
             app.MapGet("/", () => "Welcome to Consumer Api!");
 
-            app.MapGet("/v1/reserva", async (IReservaRepo repo, IMapper mapper) =>
-            {
-                try
-                {
-                    var reservas = await repo.GetAllReservas();
+            //app.MapGet("/v1/reserva", async (IReservaRepo repo, IMapper mapper) =>
+            //{
+            //    try
+            //    {
+            //        var reservas = await repo.GetAllReservas();
 
-                    return Results.Ok(mapper.Map<IEnumerable<ReservaReadDto>>(reservas));
-                }
-                catch (InvalidOperationException ex)
-                {
-                    return Results.BadRequest(ex.Message);
-                }
-                catch (Exception)
-                {
-                    return Results.StatusCode(500);
-                }
+            //        return Results.Ok(mapper.Map<IEnumerable<ReservaReadDto>>(reservas));
+            //    }
+            //    catch (InvalidOperationException ex)
+            //    {
+            //        return Results.BadRequest(ex.Message);
+            //    }
+            //    catch (Exception)
+            //    {
+            //        return Results.StatusCode(500);
+            //    }
                 
-            });
+            //});
 
             //Implementar o GetReservaEntityById
            app.MapGet("/v1/reserva/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) =>
@@ -103,29 +103,29 @@ namespace api_consumer.Api.Reserva.Endpoints
                 }
             });
 
-            app.MapDelete("/v1/commands/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) => 
-            {
-                try
-                {
-                    var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
-                    if (reserva != null)
-                    {
-                        repo.DeleteReserva(reserva);
-                        await repo.SaveChanges();
-                        return Results.Ok();
-                    }
-                    return Results.NotFound();
+            //app.MapDelete("/v1/commands/{idCliente}/{idEstacionamento}", async (IReservaRepo repo, IMapper mapper, int idCliente, int idEstacionamento) => 
+            //{
+            //    try
+            //    {
+            //        var reserva = await repo.GetReservaEntityById(idCliente, idEstacionamento);
+            //        if (reserva != null)
+            //        {
+            //            repo.DeleteReserva(reserva);
+            //            await repo.SaveChanges();
+            //            return Results.Ok();
+            //        }
+            //        return Results.NotFound();
                    
-                }
-                catch (InvalidOperationException ex)
-                {
-                    return Results.BadRequest(ex.Message);
-                }
-                catch (Exception)
-                {
-                    return Results.StatusCode(500);
-                }
-            });
+            //    }
+            //    catch (InvalidOperationException ex)
+            //    {
+            //        return Results.BadRequest(ex.Message);
+            //    }
+            //    catch (Exception)
+            //    {
+            //        return Results.StatusCode(500);
+            //    }
+            //});
 
         }
     }

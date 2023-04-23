@@ -6,9 +6,9 @@ namespace api_consumer.Api.Reserva.Repository
     {
         Task SaveChanges();
         Task<ReservaEntity>? GetReservaEntityById(int idCliente, int idEstacionamento); //implementado
-        Task<IEnumerable<ReservaEntity>> GetAllReservas(); //implementado
+        //Task<IEnumerable<ReservaEntity>> GetAllReservas(); //implementado
         Task CreateReserva(ReservaEntity reserva); //implementado
 
-        void DeleteReserva(ReservaEntity reserva);
+        //void DeleteReserva(ReservaEntity reserva);
     }
 }

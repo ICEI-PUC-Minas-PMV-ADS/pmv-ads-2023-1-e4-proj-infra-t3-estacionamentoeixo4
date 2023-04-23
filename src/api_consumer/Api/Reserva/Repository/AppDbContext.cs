@@ -19,6 +19,7 @@ namespace api_consumer.Api.Reserva.Repository
                 entity.Property(e => e.Duracao).HasColumnName("duracao").IsRequired();
                 entity.Property(e => e.HorarioReserva).HasColumnName("horario_reserva").HasColumnType("timestamp").IsRequired();
                 entity.Property(e => e.IdVeiculo).HasColumnName("id_veiculo").IsRequired();
+                entity.Property(e => e.CanceladoEm).HasColumnName("cancelado_em");
             });
 
             // Debater cominicação com o outro back-end
