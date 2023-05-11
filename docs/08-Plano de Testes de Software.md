@@ -1,19 +1,48 @@
 # Plano de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>
 
-Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos.
+> **Os requisitos para realização dos teste de software são:** 
+>
+> - O software precisa estar com o front-end funcional.
+> - O software precisa que o back-end esteja recebendo os inputs do front-end. 
+> - O software precisa que o back-end esteja registrando os dados inputados em um banco de dados.
 
-Enumere quais cenários de testes foram selecionados para teste. Neste tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo de usuários que foi escolhido para participar do teste e as ferramentas utilizadas.
- 
-## Ferramentas de Testes (Opcional)
 
-Comente sobre as ferramentas de testes utilizadas.
- 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e Geração de Planos de Teste de Software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+Os testes funcionais a serem realizados na aplicação são descritos a seguir:
+
+|  Caso de teste | CT-01- Cadastramento de estacionamento  |
+| :------------ | :------------ |
+| **Requisito Associado**  |  RF-03 O sistema deve permitir ao administrador de estacionamento realizar um cadastro, informando apenas nome fantasia, CNPJ, e-mail e senha na aplicação Web. |
+| **Objetivo do teste**  |  Verificar se ao inputar os dados na página de cadastro, os dados serão aramazenados no banco de dados. |
+|  **Critérios de Êxito** | O banco de dados deve conter todos os dados do cadastro preenchidos conforme a página de login.  |
+
+|  Caso de teste | CT-02- Login da aplicação  |
+| :------------ | :------------ |
+| **Requisito Associado**  |  RF-04 O sistema deve permitir ao administrador que tem cadastro fazer o login na aplicação Web. |
+| **Objetivo do teste**  |  Verificar na página de login, se após inserir os dados do administrador, ele tem acesso ao sistema de controle de estacionamento. |
+|  **Critérios de Êxito** | O administrsdor deve ser capaz de visualizar que sua conta foi acessada com sucesso.  |
+
+|  Caso de teste | CT-03- Vagas disponíveis  |
+| :------------ | :------------ |
+| **Requisito Associado**  |  RF-08 O sistema deve permitir ao administrador informar quantas vagas possui o seu estacionamento, bem como o valor por hora e/ou tipo de veículo. |
+| **Objetivo do teste**  | Verificar na página de consultar, quantas vagas estão disponíveis e seus respectivos valores. |
+|  **Critérios de Êxito** | Exibir para o administrador as informações sobre quantidade de vagas e valores. |
+
+|  Caso de teste | CT-04- Status de vagas  |
+| :------------ | :------------ |
+| **Requisito Associado**  |  RF-11 O sistema deve permitir ao administrador visualizar o status das vagas cadastradas para o seu estacionamento. |
+| **Objetivo do teste**  |  Verificar na página de informações sobre o status de vagas disponíveis. |
+|  **Critérios de Êxito** |O administrador deve ser capaz de controlar a disponibilidade de vagas. |
+
+|  Caso de teste | CT-05- Funcionalidade de atualizar cadastro  |
+| :------------ | :------------ |
+| **Requisito Associado**  |  RF-12 O sistema deve permitir ao administrador acompanhar o andamento das reservas atuais e programadas. |
+| **Objetivo do teste**  | Verificar na página de consultar, o andamento das reservas atuais e programadas. |
+|  **Critérios de Êxito** | Exibir as reservas atuais e programadas.|
+
+|  Caso de teste | CT-06- Avaliações e comentários  |
+| :------------ | :------------ |
+| **Requisito Associado**  |  RF-13 O sistema deve permitir o monitoramento de avaliações e comentários dos usuários sobre o seu negócio. |
+| **Objetivo do teste**  | Verificar as avaliações e comentários dos usuários sobre o negócio. |
+|  **Critérios de Êxito** | Exibir as avaliações e comentários dos usuários.|
+
