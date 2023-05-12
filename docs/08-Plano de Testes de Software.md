@@ -34,7 +34,7 @@ Os testes funcionais a serem realizados na aplicação são descritos a seguir:
 | **Objetivo do teste**  |  Verificar na página de informações sobre o status de vagas disponíveis. |
 |  **Critérios de Êxito** |O administrador deve ser capaz de controlar a disponibilidade de vagas. |
 
-|  Caso de teste | CT-05- Funcionalidade de atualizar cadastro  |
+|  Caso de teste | CT-05- Monitoramento de vagas  |
 | :------------ | :------------ |
 | **Requisito Associado**  |  RF-12 O sistema deve permitir ao administrador acompanhar o andamento das reservas atuais e programadas. |
 | **Objetivo do teste**  | Verificar na página de consultar, o andamento das reservas atuais e programadas. |
