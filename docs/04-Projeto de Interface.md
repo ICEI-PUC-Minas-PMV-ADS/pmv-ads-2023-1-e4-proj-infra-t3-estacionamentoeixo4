@@ -23,6 +23,20 @@ O diagrama foi pensado de forma a atender a todas as histórias de usuários abo
 A estrutura da aplicação web será da seguinte forma: 
 
 ![template](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/c77d6cda-939b-4b65-9fb9-ad612753a99b)
+(Tela - Home)
+<br>
+<br>
+![image2](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/f99fef3f-9131-4a85-82ca-20b1ef567dfb)
+(Tela - Login)
+<br>
+<br>
+![image3](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/6036caf9-d7d0-41d0-8f88-f80a4365582a)
+(Tela - Cadastro)
+<br>
+<br>
+![image4](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/5bdc77c7-42ea-4554-a305-7835f8cc3a61)
+(Tela - Dashboard)
+
 
 ## Diagrama de Fluxo - Mobile
 
