@@ -1,36 +1,33 @@
 
 # Projeto de Interface
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
+A elaboração da interface do sistema web e mobile priorizam a simplicidade e focam em agilidade, acessibilidade e usabilidade
 
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
+## Diagrama de Fluxo - Web
 
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
+O diagrama abaixo mostra uma visão geral da interação do usuário (administrador do estacionamento) pelas telas do sistema:
 
-## Diagrama de Fluxo
+![Diagrama de telas drawio (1)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/f654f3c1-e45c-4d6a-bc85-e1811aa3ebaa)
 
-O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo e  muitas vezes sem a necessidade do desenho do design das telas da interface. Isso permite que o design das interações seja bem planejado e gere impacto na qualidade no design do wireframe interativo que será desenvolvido logo em seguida.
+As principais interfaces da plataforma são:
 
-O diagrama de fluxo pode ser desenvolvido com “boxes” que possuem internamente a indicação dos principais elementos de interface - tais como menus e acessos - e funcionalidades, tais como editar, pesquisar, filtrar, configurar - e a conexão entre esses boxes a partir do processo de interação. Você pode ver mais explicações e exemplos https://www.lucidchart.com/blog/how-to-make-a-user-flow-diagram.
+* Home: tela principal da aplicação
+* Tela de cadastro: permite que o administrador do estacionamento faça o seu cadastro na aplicação, de forma simples, RF-03;
+* Tela de login: permite que o administrador faça o login no sistema, caso já tenha o cadastro, conforme RF-04;
+* Tela "Dashboard": permite ao administrador do estacionamento a utilização das funcionalidades do sistema, quais sejam: cadastrar vagas no estacionamento, com valor e hora (RF-08), visualisar as reservas feitas (RF-09), acompanhar o status das reservas (RF-12), além de monitorar as avaliações e comentários sobre o estacionamento, feitos pelos clientes (RF-13).
 
-![Exemplo de Diagrama de Fluxo](img/diagramafluxo2.jpg)
+O diagrama foi pensado de forma a atender a todas as histórias de usuários abordadas.
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas de Fluxo”.
+## Wireframe - Web
 
-> **Links Úteis**:
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada | Produtividade | TechTudo](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+A estrutura da aplicação web será da seguinte forma: 
 
-## Wireframes
+![template](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/c77d6cda-939b-4b65-9fb9-ad612753a99b)
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+## Diagrama de Fluxo - Mobile
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+*Etapa 4*
+
+## Wireframe - Mobile
+
+*Etapa 4*
