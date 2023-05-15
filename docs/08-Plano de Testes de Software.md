@@ -10,7 +10,7 @@
 
 Os testes funcionais a serem realizados na aplicação são descritos a seguir:
 
-|  Caso de teste | CT-01- Cadastramento de estacionamento  |
+|  Caso de teste | CT-01- Cadastro de estacionamento  |
 | :------------ | :------------ |
 | **Requisito Associado**  |  RF-03 O sistema deve permitir ao administrador de estacionamento realizar um cadastro, informando apenas nome fantasia, CNPJ, e-mail e senha na aplicação Web. |
 | **Objetivo do teste**  |  Verificar se ao inputar os dados na página de cadastro, os dados serão aramazenados no banco de dados. |
