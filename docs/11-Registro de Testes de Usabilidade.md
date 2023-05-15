@@ -49,4 +49,4 @@ Tabela com resumo dos resultados.
 
 **Conclusão**
 
-A maioria dos participantes considerou que o sistema de cadastro de estaciomamento e de vagas é bem organizado, limpo, muito útil e fácil de usar. Ter um site centralizado para manter um banco de dados de vagas e tendo acesso a informações é fundamental para uma melhora na administração de estacionamentos. A implementação/atualizações, recomendações e a continuidade do trabalho com os usuários garantirá um site contínuo centrado na sua função primordial, manter um banco de dados seguro e de fácil usabilidade.
+A maioria dos participantes considerou que o sistema de cadastro de estacionamento e de vagas é bem organizado, limpo, muito útil e fácil de usar. Ter um site centralizado para manter um banco de dados de vagas e tendo acesso a informações é fundamental para uma melhora na administração de estacionamentos. A implementação/atualizações, recomendações e a continuidade do trabalho com os usuários garantirá um site contínuo centrado na sua função primordial, manter um banco de dados seguro e de fácil usabilidade.
