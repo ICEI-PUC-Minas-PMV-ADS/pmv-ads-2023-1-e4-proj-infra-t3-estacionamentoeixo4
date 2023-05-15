@@ -40,9 +40,5 @@ Os testes funcionais a serem realizados na aplicação são descritos a seguir:
 | **Objetivo do teste**  | Verificar na página de consultar, o andamento das reservas atuais e programadas. |
 |  **Critérios de Êxito** | Exibir as reservas atuais e programadas.|
 
-|  Caso de teste | CT-06- Avaliações e comentários  |
-| :------------ | :------------ |
-| **Requisito Associado**  |  RF-13 O sistema deve permitir o monitoramento de avaliações e comentários dos usuários sobre o seu negócio. |
-| **Objetivo do teste**  | Verificar as avaliações e comentários dos usuários sobre o negócio. |
-|  **Critérios de Êxito** | Exibir as avaliações e comentários dos usuários.|
+
 

@@ -27,9 +27,6 @@
 	  
 5)  *Monitoramento de vagas* : Verificar na página de consultar, o andamento das reservas atuais e programadas, podendo assim disponibilizar mais ou menos vagas para os usuários.
 
-6)  *Avaliações e comentários* : Permitir o monitoramento de avaliações e comentários dos usuários sobre o negócio.
-
- 
 
 ## Dados que serão coletados durante os testes: 
 
