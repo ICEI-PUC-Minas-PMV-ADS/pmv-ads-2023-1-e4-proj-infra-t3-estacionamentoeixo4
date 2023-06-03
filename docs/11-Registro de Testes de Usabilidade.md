@@ -19,6 +19,17 @@ Os desenvolvedores Web Front-end e Back-end junto com os demais integrantes do g
 	  
 5)  *Monitoramento de vagas* : Verificar na página de consultar, o andamento das reservas atuais e programadas, podendo assim disponibilizar mais ou menos vagas para os usuários.
 
+6) *Cadastro de usuário* : 
+
+7) *Cadastro de veículos* :
+
+8) *Veículo cadastrado* :
+
+9) *Cadastro de reserva* :
+
+10) *Visualização de reservas* :
+
+
 **Metodologia**
 
 Cada participante do projeto realizou o teste individualmente durante o tempo de 20 minutos aproximadamente. Durante a sessão, foi necessário que cada participante preenchesse um breve questionário de avaliação. Assim os participantes puderam fazer um teste com resultado final com notas.
@@ -41,11 +52,11 @@ Tabela com resumo dos resultados.
 
 |  Funcionalidades | Média de Notas | Resultado |
 | :------------ | :------------: |:------------ |
-| Cadastrar Membro |  5  | Pronto para produção|
-| Consultar Membro |  5  | Pronto para produção|
-| Deletar Membro |  5  | Pronto para produção|
-| Atualizar Membro |  5  | Pronto para produção|
-| Exportar Dados |  5  | Pronto para produção|
+| Cadastrar estacionamento |  5  | Pronto para produção|
+| Login da aplicação |  5  | Pronto para produção|
+| Vagas disponíveis |  5  | Pronto para produção|
+| Status de vagas |  5  | Pronto para produção|
+| Monitoramento de vagas |  5  | Pronto para produção|
 
 **Conclusão**
 
