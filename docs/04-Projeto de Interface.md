@@ -40,7 +40,8 @@ A estrutura da aplicação web será da seguinte forma:
 
 ## Diagrama de Fluxo - Mobile
 
-*Etapa 4*
+![Mobile drawio (1)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/4dbab04b-b7c7-4272-beb4-dae2ab06a6c8)
+
 
 ## Wireframe - Mobile
 A estrutura da aplicação mobile será da seguinte forma:
