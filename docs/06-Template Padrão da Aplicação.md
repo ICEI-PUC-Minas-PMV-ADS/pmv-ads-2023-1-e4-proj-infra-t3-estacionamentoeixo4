@@ -93,15 +93,43 @@ A tela veículos é onde usuário visualiza os veículos cadastrados e adiciona 
 <br>
 <br>
 
-## Tela - Reservas
-<img width="300" height="600" src="img/tela-reservas-mobile-substituir.png">  
+## Tela - Preview Reservas
+<img width="300" height="600" src="img/preview_reserva.jpg">  
+
+Tela para ver um sumário da reserva e vagas daquele estacionamento.
+<br>
+<br>
+
+## Tela - Reservas Cadastro
+<img width="300" height="600" src="img/cadastro_reserva.jpg">  
 
 Tela para efetuar a reserva de uma nova vaga.
 <br>
 <br>
 
+## Tela - Reservas DatePicker
+<img width="300" height="600" src="img/date_picker_reserva.jpg">  
+
+Tela para definir a data da reserva futura.
+<br>
+<br>
+
+## Tela - Reservas TimePicker
+<img width="300" height="600" src="img/time_picker_reserva.jpg">  
+
+Tela para efetuar o horário/duração.
+<br>
+<br>
+
+## Tela - Reservas
+<img width="300" height="600" src="img/minha_reserva_dark.jpg">  
+
+Tela para visualizar as reservas atuais do usuário.
+<br>
+<br>
+
 ## Tela - Histórico
-<img width="300" height="600" src="img/tela-historico-mobile-substituir.png">   
+<img width="300" height="600" src="img/historico_reserva_dark.jpg">   
 
 Tela para visualização do histórico de reservas efetuadas pelo usuário.
 <br>
