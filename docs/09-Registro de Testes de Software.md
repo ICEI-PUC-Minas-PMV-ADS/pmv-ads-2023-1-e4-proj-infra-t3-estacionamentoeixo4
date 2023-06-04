@@ -12,6 +12,7 @@
 | CT-08 |  Veículo cadastrado  | Sucesso|
 | CT-09 |  Cadastro de reserva  | Sucesso|
 | CT-10 |  Visualização de reservas  | Sucesso|
+| CT-11 |  Visualização de reservas  | Sucesso|
 
 ## CT-01- Cadastro de estacionamento
 
@@ -56,9 +57,9 @@
 
 ## CT-10-Visualização de reservas
 
+## CT-11-Busca por estacionamentos próximos
 
-
-
+![listar_estacionamentos](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/54fcc4ba-12d1-4c4c-b1af-2bf2fe3cf445)
 
 ## Avaliação
 
