@@ -55,33 +55,26 @@ Os testes funcionais a serem realizados na aplicação são descritos a seguir:
 |  Caso de teste | CT-07- Cadastro de veículo  |
 | :------------ | :------------ |
 | **Requisito Associado**  |  RF-01 O sistema deve permitir ao cliente a criação do cadastro do seu veículo, informando placa e modelo no aplicativo mobile.|
-| **Objetivo do teste**  | Verificar na página de de login do usuário, o cadastramento do veículo. |
+| **Objetivo do teste**  | Verificar na página *Veículos* o cadastramento do veículo. |
 |  **Critérios de Êxito** | Verificar o cadastro do veículo.|
 
 
 |  Caso de teste | CT-08- Veículo cadastrado  |
 | :------------ | :------------ |
 | **Requisito Associado**  |  RF-02 O sistema deve permitir ao cliente a verificação do cadastro do seu veículo, mostrando a placa e modelo no aplicativo mobile.|
-| **Objetivo do teste**  | Verificar na página de de login do usuário, o cadastramento do veículo. |
+| **Objetivo do teste**  | Verificar na página *Veículos* o cadastramento do veículo. |
 |  **Critérios de Êxito** | Verificar o cadastro do veículo.|
 
 
 |  Caso de teste | CT-09- Cadastro de reserva  |
 | :------------ | :------------ |
 | **Requisito Associado**  |  RF-02 O sistema deve permitir ao cliente a realização do cadastro da reserva.|
-| **Objetivo do teste**  | Verificar na página de de login do usuário, o cadastramento de reserva. |
-|  **Critérios de Êxito** | Verificar o cadastro da reserva.|
-
-
-|  Caso de teste | CT-09- Cadastro de reserva  |
-| :------------ | :------------ |
-| **Requisito Associado**  |  RF-02 O sistema deve permitir ao cliente a realização do cadastro da reserva.|
-| **Objetivo do teste**  | Verificar na página de de login do usuário, o cadastramento de reserva. |
+| **Objetivo do teste**  | Verificar na página *Reservas*, o cadastramento de reserva. |
 |  **Critérios de Êxito** | Verificar o cadastro da reserva.|
 
 
 |  Caso de teste | CT-10- Visualização da reserva  |
 | :------------ | :------------ |
 | **Requisito Associado**  |  RF-02 O sistema deve permitir ao cliente a visualização da reserva.|
-| **Objetivo do teste**  | Verificar na página de de login do usuário, a visualização da reserva. |
+| **Objetivo do teste**  | Verificar na página *Histórico*, o cadastramento de reserva. |
 |  **Critérios de Êxito** | Verificar a reserva e, andamento.|
