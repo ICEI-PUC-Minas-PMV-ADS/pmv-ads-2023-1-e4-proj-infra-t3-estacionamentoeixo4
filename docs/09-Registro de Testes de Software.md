@@ -55,7 +55,15 @@
 
 ## CT-09-Cadastro de reserva
 
+|Tela 1| Tela 2|
+|--------|---------|
+|![Tela cadastro](img/date_picker_reserva.jpg)|![Tela cadastro](img/retorno_reserva.png)|
+
 ## CT-10-Visualização de reservas
+
+|Tela 1| Tela 2|
+|--------|---------|
+|![Tela listar reserva](img/historico_reserva_dark.jpg)|![Tela lista do histórico](img/retorno_lista_reservas.png)|
 
 ## CT-11-Busca por estacionamentos próximos
 
