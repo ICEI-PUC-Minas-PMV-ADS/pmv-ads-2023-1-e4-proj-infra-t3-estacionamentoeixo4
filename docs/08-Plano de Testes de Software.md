@@ -85,3 +85,4 @@ Os testes funcionais a serem realizados na aplicação são descritos a seguir:
 | **Objetivo do teste**  | Verificar na página *Busca por estacionamentos*, se foram apresentados os estacionametos mais próximos ao endereço informado. |
 |  **Critérios de Êxito** | Verificar a lista de estacionamentos exibida.|
 
+
