@@ -87,6 +87,10 @@ A estrutura da aplicação mobile será da seguinte forma:
 (Tela - Veículos)
 <br>
 <br>
+<img width="300" height="600" src="img/preview_reserva.jpg">
+(Tela - Reserva Preview)
+<br>
+<br>
 <img width="300" height="600" src="img/minhas_reservas_light.jpg">
 <img width="300" height="600" src="img/minha_reserva_dark.jpg">      
 (Tela - Reservas)
