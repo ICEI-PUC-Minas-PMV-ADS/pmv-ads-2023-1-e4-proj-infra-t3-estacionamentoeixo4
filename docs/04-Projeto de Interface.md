@@ -87,12 +87,26 @@ A estrutura da aplicação mobile será da seguinte forma:
 (Tela - Veículos)
 <br>
 <br>
-<img width="300" height="600" src="img/tela-reservas-mobile-substituir.png">   
+<img width="300" height="600" src="img/minhas_reservas_light.jpg">
+<img width="300" height="600" src="img/minha_reserva_dark.jpg">      
 (Tela - Reservas)
 <br>
 <br>
-<img width="300" height="600" src="img/tela-historico-mobile-substituir.png">   
+<img width="300" height="600" src="img/historico_reserva_light.jpg">   
+<img width="300" height="600" src="img/historico_reserva_dark.jpg">   
 (Tela - Histórico)
+<br>
+<br>
+<img width="300" height="600" src="img/cadastro_reserva.jpg">   
+(Tela - Reserva)
+<br>
+<br>
+<img width="300" height="600" src="img/date_picker_reserva.jpg">   
+(Tela - Reserva Date Picker)
+<br>
+<br>
+<img width="300" height="600" src="img/time_picker_reserva.jpg">   
+(Tela - Reserva Time Picker)
 <br>
 <br>
 
