@@ -27,6 +27,23 @@
 	  
 5)  *Monitoramento de vagas* : Verificar na página de consultar, o andamento das reservas atuais e programadas, podendo assim disponibilizar mais ou menos vagas para os usuários.
 
+6) *Cadastro de usuário* : Verificar se ao inserir os dados na página de cadastro, estes dados darão acesso ao sistema e o usuário poderá assim utilizar as funcionalidades do aplicativo mobile.
+
+7) *Login do usuário*: Verificar na página de login se, após inserir os dados pedidos no cadastro, o usuário receberá acesso às funcionalidades do aplicativo mobile.
+
+7) *Cadastro de veículos* : Verificar se o usuário com cadastro consegue também cadastrar seu(s) veículos(s) no sistema do aplicativo, ao inserir os dados na página de cadastro de veículo.
+
+8) *Veículo cadastrado* : Exibir para o usuário o(s) veículos(s) que ele possui cadastrado no aplicativo.
+
+9) *Buscar estacionamento* : Exibir para o usuário a opção de busca de estacionamento, com a possibilidade de buscar por estacionamentos próximos ao endereço de destino informado.
+
+9) *Reserva de vaga* : Exibir para o usuário a opção de prosseguir com a reserva após a busca de um estacionamento pela localização informada e a confirmação da reserva.
+
+10) *Visualização de reservas* : Exibir para o usuário as reservas ativas.
+
+11) *Histórico* : Exibir para o usuário o histórico de todas as reservas já feitas por ele no aplicativo mobile.
+
+
 
 ## Dados que serão coletados durante os testes: 
 
