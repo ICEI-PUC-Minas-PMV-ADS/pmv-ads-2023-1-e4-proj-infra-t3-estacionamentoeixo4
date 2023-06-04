@@ -51,3 +51,7 @@ O Firebase Authentication foi utilizado para autenticar usuários no aplicativo:
 `O grupo optou por utilizar o PostgreSQL como banco de dados relacional. Na imagem abaixo é possível visualizar algumas tabelas do banco:`
 
 ![image_bancoDeDados](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/3b9bd60a-e7f0-4291-bd71-24741bdf23f9)
+<br>
+![image_bancoDeDados2](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e4-proj-infra-t3-estacionamentoeixo4/assets/88891675/a3b4632f-21a8-48c2-b12a-f694a1425981)
+
+
