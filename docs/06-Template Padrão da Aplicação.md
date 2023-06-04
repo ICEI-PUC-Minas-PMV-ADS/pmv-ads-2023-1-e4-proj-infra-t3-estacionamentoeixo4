@@ -93,7 +93,12 @@ A tela veículos é onde usuário visualiza os veículos cadastrados e adiciona 
 <br>
 <br>
 
+## Tela - Reservas
+<img width="300" height="600" src="img/tela-reservas-mobile-substituir.png">  
 
+Tela para efetuar a reserva de uma nova vaga.
+<br>
+<br>
 
 ## Tela - Histórico
 <img width="300" height="600" src="img/tela-historico-mobile-substituir.png">   
@@ -102,9 +107,4 @@ Tela para visualização do histórico de reservas efetuadas pelo usuário.
 <br>
 <br>
 
-## Tela - Reservas
-<img width="300" height="600" src="img/tela-reservas-mobile-substituir.png">  
 
-Tela para efetuar a reserva de uma nova vaga.
-<br>
-<br>
