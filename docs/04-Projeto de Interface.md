@@ -47,13 +47,12 @@ A estrutura da aplicação web será da seguinte forma:
 A estrutura da aplicação mobile será da seguinte forma:
 <br>
 
-<img width="300" height="600" src="img/tela-login-mobile.png">   
-
-(Tela - Login)
-<br>
-<br>
 <img width="300" height="600" src="img/tela-cadastro-mobile.png">   
 (Tela - Cadastro)
+<br>
+<br>
+<img width="300" height="600" src="img/tela-login-mobile.png">   
+(Tela - Login)
 <br>
 <br>
 <img width="300" height="600" src="img/tela-menu-mobile-dark.png">   
@@ -69,7 +68,7 @@ A estrutura da aplicação mobile será da seguinte forma:
 <br>
 <br>
 <img width="300" height="600" src="img/tela-consulta-estacionamentos-mobile.png">   
-(Tela - Consulta por Endereço)
+(Tela - Busca por Estacionamentos)
 <br>
 <br>
 <img width="300" height="600" src="img/tela-mapa-mobile.png">   
@@ -80,19 +79,20 @@ A estrutura da aplicação mobile será da seguinte forma:
 (Tela - Rota)
 <br>
 <br>
-<img width="300" height="600" src="img/tela-veiculos-mobile.png">   
-(Tela - Veículos)
-<br>
-<br>
 <img width="300" height="600" src="img/tela-cadastro-veiculos-mobile.png">   
 (Tela - Cadastrar veículo)
 <br>
 <br>
-<img width="300" height="600" src="img/tela-historico-mobile-substituir.png">   
-(Tela - Histórico)
+<img width="300" height="600" src="img/tela-veiculos-mobile.png">   
+(Tela - Veículos)
 <br>
 <br>
 <img width="300" height="600" src="img/tela-reservas-mobile-substituir.png">   
 (Tela - Reservas)
 <br>
 <br>
+<img width="300" height="600" src="img/tela-historico-mobile-substituir.png">   
+(Tela - Histórico)
+<br>
+<br>
+
