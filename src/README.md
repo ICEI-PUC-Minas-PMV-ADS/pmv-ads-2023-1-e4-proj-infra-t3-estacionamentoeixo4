@@ -8,6 +8,6 @@
 
 [https://github.com/ICEI-PUC-Minas-PMV-ADS/estacionamentoeixo4-back-end](https://github.com/ICEI-PUC-Minas-PMV-ADS/estacionamentoeixo4-back-end)
 
-## Repositório back-end
+## Repositório mobile
 
 [https://github.com/ICEI-PUC-Minas-PMV-ADS/estacionamentoeixo4-mobile](https://github.com/ICEI-PUC-Minas-PMV-ADS/estacionamentoeixo4-mobile)
